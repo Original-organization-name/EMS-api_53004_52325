@@ -5,7 +5,7 @@ namespace EMS.Data.Employee.Entities;
 
 public class Contact : Entity
 {
-    public ContactTypeList TypeList { get; set; }
-    public string Data { get; set; }
     public ContactType Type { get; set; }
+    public string Data { get; set; }
+    public ContractPrivacy Privacy { get; set; }
 }
