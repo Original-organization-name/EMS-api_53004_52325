@@ -11,5 +11,5 @@ public record EmployeeDto(
     Gender? Gender,
     AddressDto? Address,
     List<ContactDto> Contacts,
-    PaymentMethodDto PaymentMethod);
+    PaymentMethodDto? PaymentMethod);
     
