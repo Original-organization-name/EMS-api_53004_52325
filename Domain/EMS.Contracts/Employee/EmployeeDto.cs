@@ -10,6 +10,6 @@ public record EmployeeDto(
     DateTime? Birthdate,
     Gender? Gender,
     AddressDto? Address,
-    List<ContactDto> Contacts,
+    List<ContactDto>? Contacts,
     PaymentMethodDto? PaymentMethod);
     

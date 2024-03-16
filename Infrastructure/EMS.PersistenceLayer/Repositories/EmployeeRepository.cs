@@ -23,4 +23,10 @@ public class EmployeeRepository : BaseRepository<Employee>, IEmployeeRepository
         return await GetAll()
             .FirstOrDefaultAsync(employee => employee.Id == id);
     }
+
+    public async Task<bool> IsPeselExist(string? pesel)
+    {
+        if (string.IsNullOrWhiteSpace(pesel)) return false;
+        return await ExistsAsync(x => x.Pesel == pesel);
+    }
 }

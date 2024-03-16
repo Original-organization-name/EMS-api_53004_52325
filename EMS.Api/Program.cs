@@ -1,3 +1,4 @@
+using EMS.Api.Middleware;
 using EMS.PersistenceLayer;
 using EMS.Services;
 using EMS.Shared.Repositories;
@@ -23,6 +24,8 @@ typeAdapterConfig.Scan(typeof(EMS.Contracts.AssemblyReference).Assembly);
 var mapperConfig = new Mapper(typeAdapterConfig);
 builder.Services.AddSingleton<IMapper>(mapperConfig);
 
+builder.Services.AddTransient<ExceptionHandlingMiddleware>();
+
 builder.Services.AddDbContext<DatabaseContext>(ServiceLifetime.Scoped);
 
 var app = builder.Build();
@@ -32,6 +35,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseMiddleware<ExceptionHandlingMiddleware>();
 
 app.UseHttpsRedirection();
 

@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace EMS.Presentation.Controllers;
 
 [ApiController]
-[Route("api/[controller]")]
+[Route("api/employees")]
 public class EmployeesController : ControllerBase
 {
     private readonly IEmployeeService _employeeService;
@@ -36,7 +36,7 @@ public class EmployeesController : ControllerBase
     public async Task<ActionResult<EmployeeModel>> Post([FromBody] EmployeeDto value)
     {
         var employee = await _employeeService.Add(value);
-        return Ok(employee);
+        return CreatedAtAction(nameof(GetEmployeeById), new { id = employee.Id }, employee);
     }
 
     // PUT: api/Employees/5
