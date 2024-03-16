@@ -3,6 +3,7 @@ using System;
 using EMS.PersistenceLayer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,13 +12,15 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace EMS.PersistenceLayer.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    partial class DatabaseContextModelSnapshot : ModelSnapshot
+    [Migration("20240316160205_configEmployeeTabels")]
+    partial class configEmployeeTabels
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "7.0.11")
+                .HasAnnotation("ProductVersion", "7.0.17")
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
@@ -44,9 +47,6 @@ namespace EMS.PersistenceLayer.Migrations
                     b.Property<string>("Nip")
                         .HasColumnType("text");
 
-                    b.Property<Guid?>("PaymentMethodId")
-                        .HasColumnType("uuid");
-
                     b.Property<string>("Pesel")
                         .HasColumnType("text");
 
@@ -57,8 +57,6 @@ namespace EMS.PersistenceLayer.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("AddressId");
-
-                    b.HasIndex("PaymentMethodId");
 
                     b.ToTable("Employees");
                 });
@@ -144,13 +142,7 @@ namespace EMS.PersistenceLayer.Migrations
                         .WithMany()
                         .HasForeignKey("AddressId");
 
-                    b.HasOne("EMS.Data.Employee.Entities.PaymentMethod", "PaymentMethod")
-                        .WithMany()
-                        .HasForeignKey("PaymentMethodId");
-
                     b.Navigation("Address");
-
-                    b.Navigation("PaymentMethod");
                 });
 
             modelBuilder.Entity("EMS.Data.Employee.Entities.Contact", b =>

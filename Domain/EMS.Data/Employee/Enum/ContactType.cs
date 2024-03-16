@@ -5,5 +5,6 @@ public enum ContactType
     Email,
     Telephone,
     Fax,
-    Skype
+    Skype,
+    Other
 }
