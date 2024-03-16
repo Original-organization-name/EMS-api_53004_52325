@@ -1,6 +1,10 @@
-﻿namespace EMS.Data.Employee.Entities;
+﻿using EMS.Data.Models;
 
-public class Contact
+namespace EMS.Data.Employee.Entities;
+
+public class Contact : Entity
 {
-    
-}
+    public string ContactType { get; set; }
+    public string ContactData { get; set; }
+    public Boolean ContactSort { get; set; } 
+    }
