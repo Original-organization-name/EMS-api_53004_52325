@@ -1,0 +1,28 @@
+version: '3.9'
+
+services:
+  postgres:
+    image: postgres:14-alpine
+    ports:
+      - 5432:5432
+    volumes:
+      - ems_data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_PASSWORD=V22{5ntqm3X
+      - POSTGRES_USER=admin
+
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: pgadmin4_container
+    restart: always
+    ports:
+      - "8888:80"
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@domain-name.com
+      PGADMIN_DEFAULT_PASSWORD: V22{5ntqm3X
+    volumes:
+      - pgadmin-data:/var/lib/pgadmin
+
+volumes:
+  ems_data:
+  pgadmin-data:
