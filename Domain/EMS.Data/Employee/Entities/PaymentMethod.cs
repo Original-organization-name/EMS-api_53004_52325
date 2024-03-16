@@ -1,9 +1,10 @@
-﻿using EMS.Data.Models;
+﻿using EMS.Data.Employee.Enum;
+using EMS.Data.Models;
 
 namespace EMS.Data.Employee.Entities;
 
 public class PaymentMethod : Entity
 {
-    public string PaymentWay { get; set; }
+    public PaymentType Type { get; set; }
     public string? BankAccount { get; set; }
 }
