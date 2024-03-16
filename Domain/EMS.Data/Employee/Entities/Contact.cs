@@ -1,6 +1,11 @@
-﻿namespace EMS.Data.Employee.Entities;
+﻿using EMS.Data.Employee.Enum;
+using EMS.Data.Models;
 
-public class Contact
+namespace EMS.Data.Employee.Entities;
+
+public class Contact : Entity
 {
-    
+    public ContactType Type { get; set; }
+    public string Data { get; set; }
+    public ContractPrivacy Privacy { get; set; }
 }
