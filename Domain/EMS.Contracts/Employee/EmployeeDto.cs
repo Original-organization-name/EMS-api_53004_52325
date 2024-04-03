@@ -1,4 +1,4 @@
-﻿using EMS.Data.Employee.Enum;
+﻿using EMS.Data.Employees.Enum;
 
 namespace EMS.Contracts.Employee;
 

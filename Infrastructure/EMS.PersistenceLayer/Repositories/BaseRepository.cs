@@ -26,6 +26,11 @@ public abstract class BaseRepository<T> : IBaseRepository<T> where T : Entity
         return _repositoryContext.Where(expression);
     }
 
+    public async Task<T?> GetByIdAsync(Guid id)
+    {
+        return await GetAll().FirstOrDefaultAsync(item => item.Id == id);
+    }
+
     public virtual IQueryable<T> FindByCondition(Expression<Func<T, bool>> expression)
     {
         return _repositoryContext.Where(expression).AsNoTracking();

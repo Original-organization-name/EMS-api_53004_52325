@@ -1,5 +1,5 @@
 ﻿using EMS.Contracts.Employee;
-using EMS.Data.Employee.Entities;
+using EMS.Data.Employees.Entities;
 using Mapster;
 
 namespace EMS.Contracts.Mapster;
@@ -50,7 +50,7 @@ public class EmployeeRegister : IRegister
             .Map(dest => dest.Type, src => src.Type)
             .Map(dest => dest.BankAccount, src => src.BankAccount);
             
-        config.NewConfig<EmployeeDto, Data.Employee.Employee>()
+        config.NewConfig<EmployeeDto, Data.Employees.Employee>()
             .Map(dest => dest.Name, src => src.Name)
             .Map(dest => dest.Surname, src => src.Surname)
             .Map(dest => dest.Pesel, src => src.Pesel)
@@ -61,7 +61,7 @@ public class EmployeeRegister : IRegister
             .Map(dest => dest.Contacts, src => src.Contacts.Adapt<List<Contact>>())
             .Map(dest => dest.PaymentMethod, src => src.PaymentMethod.Adapt<PaymentMethod>());
             
-        config.NewConfig<Data.Employee.Employee, EmployeeModel>()
+        config.NewConfig<Data.Employees.Employee, EmployeeModel>()
             .Map(dest => dest.Id, src => src.Id)
             .Map(dest => dest.Name, src => src.Name)
             .Map(dest => dest.Surname, src => src.Surname)

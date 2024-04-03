@@ -8,6 +8,7 @@ public interface IBaseRepository<T> where T : Entity
     IQueryable<T> GetAll();
     IQueryable<T> FindByCondition(Expression<Func<T, bool>> expression);
     IQueryable<T> FindByConditionWithTracking(Expression<Func<T, bool>> expression);
+    Task<T?> GetByIdAsync(Guid id);
 
     Task<T?> AddAsync(T entity);
     T? Add(T entity);

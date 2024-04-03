@@ -1,11 +1,11 @@
 ﻿using EMS.Data.Abstractions;
-using EMS.Data.Employee.Entities;
-using EMS.Data.Employee.Enum;
+using EMS.Data.Employees.Entities;
+using EMS.Data.Employees.Enum;
 using EMS.Data.Exceptions;
 using EMS.Data.Helpers;
 using EMS.Data.Models;
 
-namespace EMS.Data.Employee;
+namespace EMS.Data.Employees;
 
 public class Employee : Entity, IAggregateRoot
 {

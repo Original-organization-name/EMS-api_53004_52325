@@ -1,14 +1,14 @@
+using EMS.Api;
 using EMS.Api.Middleware;
 using EMS.PersistenceLayer;
 using EMS.Services;
-using EMS.Shared.Repositories;
+using EMS.Shared.RepositoryManagers;
 using EMS.Shared.Services;
 using Mapster;
 using MapsterMapper;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
-
-// Add services to the container.
 
 builder.Services.AddControllers()
     .AddApplicationPart(typeof(EMS.Presentation.AssemblyReference).Assembly);
@@ -16,17 +16,22 @@ builder.Services.AddControllers()
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddDbContext<DatabaseContext>(ServiceLifetime.Scoped);
+
 builder.Services.AddScoped<IServiceManager, ServiceManager>();
 builder.Services.AddScoped<IRepositoryManager, RepositoryManager>();
+builder.Services.AddScoped<IDictRepositoryManager, DictRepositoryManager>();
 
 var typeAdapterConfig = TypeAdapterConfig.GlobalSettings;
 typeAdapterConfig.Scan(typeof(EMS.Contracts.AssemblyReference).Assembly);
-var mapperConfig = new Mapper(typeAdapterConfig);
-builder.Services.AddSingleton<IMapper>(mapperConfig);
+builder.Services.AddSingleton<IMapper>(new Mapper(typeAdapterConfig));
 
 builder.Services.AddTransient<ExceptionHandlingMiddleware>();
 
-builder.Services.AddDbContext<DatabaseContext>(ServiceLifetime.Scoped);
+using (var context = new DatabaseContext())
+{
+    context.Database.Migrate();
+}
 
 var app = builder.Build();
 
@@ -44,4 +49,5 @@ app.UseAuthorization();
 
 app.MapControllers();
 
+app.Seed();
 app.Run();

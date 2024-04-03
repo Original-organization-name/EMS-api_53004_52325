@@ -15,7 +15,6 @@ public class EmployeesController : ControllerBase
         _employeeService = serviceManager.EmployeeService;
     }
     
-    // GET: api/Employees
     [HttpGet]
     public async Task<ActionResult<IEnumerable<EmployeeModel>>> GetEmployees()
     {
@@ -23,7 +22,6 @@ public class EmployeesController : ControllerBase
         return Ok(employees);
     }
 
-    // GET: api/Employees/5
     [HttpGet("{id}", Name = "Get")]
     public async Task<ActionResult<EmployeeModel?>> GetEmployeeById(Guid id)
     {
@@ -31,23 +29,10 @@ public class EmployeesController : ControllerBase
         return Ok(employee);
     }
 
-    // POST: api/Employees
     [HttpPost]
     public async Task<ActionResult<EmployeeModel>> Post([FromBody] EmployeeDto value)
     {
         var employee = await _employeeService.Add(value);
         return CreatedAtAction(nameof(GetEmployeeById), new { id = employee.Id }, employee);
-    }
-
-    // PUT: api/Employees/5
-    [HttpPut("{id}")]
-    public void Put(int id, [FromBody] string value)
-    {
-    }
-
-    // DELETE: api/Employees/5
-    [HttpDelete("{id}")]
-    public void Delete(int id)
-    {
     }
 }
