@@ -1,4 +1,4 @@
-namespace EMS.Data.Employee.Enum;
+namespace EMS.Data.Employees.Enum;
 
 public enum ContractPrivacy
 {

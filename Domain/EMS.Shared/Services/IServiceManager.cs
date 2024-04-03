@@ -3,4 +3,7 @@
 public interface IServiceManager
 {
     IEmployeeService EmployeeService { get; }
+    IMedicalExaminationService MedicalExaminationService { get; }
+    IQualificationService QualificationService { get; }
+    ITrainingService TrainingService { get; }
 }

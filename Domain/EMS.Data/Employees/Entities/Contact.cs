@@ -1,7 +1,7 @@
-﻿using EMS.Data.Employee.Enum;
+﻿using EMS.Data.Employees.Enum;
 using EMS.Data.Models;
 
-namespace EMS.Data.Employee.Entities;
+namespace EMS.Data.Employees.Entities;
 
 public class Contact : Entity
 {

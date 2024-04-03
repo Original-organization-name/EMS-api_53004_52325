@@ -1,6 +1,6 @@
 ﻿using EMS.Data.Models;
 
-namespace EMS.Data.Employee.Entities;
+namespace EMS.Data.Employees.Entities;
 
 public class Address : Entity
 {

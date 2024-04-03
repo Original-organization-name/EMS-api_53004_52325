@@ -1,4 +1,4 @@
-﻿using EMS.Data.Employee.Enum;
+﻿using EMS.Data.Employees.Enum;
 using EMS.Data.Exceptions;
 
 namespace EMS.Data.Helpers;

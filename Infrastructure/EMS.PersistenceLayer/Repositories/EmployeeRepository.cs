@@ -1,4 +1,4 @@
-﻿using EMS.Data.Employee;
+﻿using EMS.Data.Employees;
 using EMS.Shared.Repositories;
 using Microsoft.EntityFrameworkCore;
 
@@ -16,12 +16,6 @@ public class EmployeeRepository : BaseRepository<Employee>, IEmployeeRepository
             .Include(employee => employee.Address)
             .Include(employee => employee.PaymentMethod)
             .Include(employee => employee.Contacts);
-    }
-
-    public async Task<Employee?> GetById(Guid id)
-    {
-        return await GetAll()
-            .FirstOrDefaultAsync(employee => employee.Id == id);
     }
 
     public async Task<bool> IsPeselExist(string? pesel)

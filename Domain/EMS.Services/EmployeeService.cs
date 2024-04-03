@@ -1,7 +1,8 @@
 ﻿using EMS.Contracts.Employee;
-using EMS.Data.Employee;
+using EMS.Data.Employees;
 using EMS.Data.Exceptions;
 using EMS.Shared.Repositories;
+using EMS.Shared.RepositoryManagers;
 using EMS.Shared.Services;
 using Mapster;
 
@@ -11,7 +12,8 @@ public class EmployeeService : IEmployeeService
 {
     private readonly IEmployeeRepository _employeeRepository;
 
-    public EmployeeService(IRepositoryManager repositoryManager) => _employeeRepository = repositoryManager.EmployeeRepository;
+    public EmployeeService(IRepositoryManager repositoryManager) => 
+        _employeeRepository = repositoryManager.EmployeeRepository;
     
     public async Task<IReadOnlyList<EmployeeModel>> GetAll()
     {
@@ -21,7 +23,7 @@ public class EmployeeService : IEmployeeService
 
     public async Task<EmployeeModel?> GetById(Guid id)
     {
-        var employee = await _employeeRepository.GetById(id);
+        var employee = await _employeeRepository.GetByIdAsync(id);
         return employee.Adapt<EmployeeModel>();
     }
 
