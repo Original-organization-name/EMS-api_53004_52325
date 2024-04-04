@@ -13,10 +13,10 @@ public interface IBaseRepository<T> where T : Entity
     Task<T?> AddAsync(T entity);
     T? Add(T entity);
 
-    Task? UpdateAsync(T entity);
+    Task UpdateAsync(T entity);
     void Update(T entity);
 
-    Task? DeleteAsync(T entity);
+    Task DeleteAsync(T entity);
     void Delete(T entity);
 
     Task<bool> ExistsAsync(Guid id);

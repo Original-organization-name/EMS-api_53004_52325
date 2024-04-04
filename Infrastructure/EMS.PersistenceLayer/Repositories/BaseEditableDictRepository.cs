@@ -28,7 +28,6 @@ public class BaseEditableDictRepository<T> : BaseRepository<T>, IBaseEditableDic
         
         entity = item;
         return entity;
-
     }
     
     public new T? Add(T entity)
