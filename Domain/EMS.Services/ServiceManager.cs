@@ -12,6 +12,7 @@ public class ServiceManager : IServiceManager
     private readonly Lazy<ITrainingService> _lazyTrainingService;
         
     private readonly Lazy<ITrainingDictService> _lazyTrainingDictService;
+    private readonly Lazy<IMedicalExaminationDictService> _lazyMedicalExaminationDictService;
 
     public ServiceManager(IRepositoryManager repositoryManager, IDictRepositoryManager dictRepositoryManager)
     {
@@ -19,8 +20,10 @@ public class ServiceManager : IServiceManager
         _lazyMedicalExaminationService = new Lazy<IMedicalExaminationService>(() => new MedicalExaminationService(repositoryManager));
         _lazyQualificationService = new Lazy<IQualificationService>(() => new QualificationService(repositoryManager));
         _lazyTrainingService = new Lazy<ITrainingService>(() => new TrainingService(repositoryManager));
-        
+       
         _lazyTrainingDictService = new Lazy<ITrainingDictService>(() => new TrainingDictService(dictRepositoryManager));
+        
+        _lazyMedicalExaminationDictService = new Lazy<IMedicalExaminationDictService>(() => new MedicalExaminationDictService(dictRepositoryManager));
     }
 
     public IEmployeeService EmployeeService => _lazyEmployeeService.Value;
@@ -29,4 +32,5 @@ public class ServiceManager : IServiceManager
     public ITrainingService TrainingService => _lazyTrainingService.Value;
     
     public ITrainingDictService TrainingDictService => _lazyTrainingDictService.Value;
+    public IMedicalExaminationDictService MedicalExaminationDictService => _lazyMedicalExaminationDictService.Value;    
 }

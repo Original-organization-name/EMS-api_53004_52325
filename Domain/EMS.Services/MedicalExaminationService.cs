@@ -35,8 +35,11 @@ public class MedicalExaminationService : IMedicalExaminationService
             ExpirationDate = medicalExamination.ExpirationDate,
         };
         
+        
+        
         medicalExam = await _repository.AddAsync(medicalExam);
         await _repository.SaveChangesAsync();
         return medicalExam.Adapt<MedicalExaminationModel>();
     }
+    
 }
