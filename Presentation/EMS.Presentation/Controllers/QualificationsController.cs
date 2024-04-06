@@ -15,21 +15,21 @@ public class QualificationsController : ControllerBase
         _service = serviceManager.QualificationService;
     }
     
-    [HttpGet(Name = "GetByEmployeeId")]
+    [HttpGet(Name = "GetEmployeeQualifications")]
     public async Task<ActionResult<IEnumerable<QualificationModel>>> GetQualifications(Guid employeeId)
     {
         var exams = await _service.GetAll(employeeId);
         return Ok(exams);
     }
 
-    [HttpGet("{id}", Name = "GetById")]
+    [HttpGet("{id}", Name = "GetQualificationById")]
     public async Task<ActionResult<QualificationModel?>> GetQualificationById(Guid employeeId, Guid id)
     {
         var qualification = await _service.GetById(id);
         return Ok(qualification);
     }
 
-    [HttpPost(Name = "Add")]
+    [HttpPost(Name = "AddQualification")]
     public async Task<ActionResult<QualificationModel>> Post(Guid employeeId, [FromBody] QualificationDto value)
     {
         var qualification = await _service.Add(employeeId, value);
