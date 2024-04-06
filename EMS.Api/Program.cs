@@ -44,6 +44,17 @@ builder.Services.AddSingleton<IMapper>(new Mapper(typeAdapterConfig));
 
 builder.Services.AddTransient<ExceptionHandlingMiddleware>();
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowSpecificOrigin",
+        cors =>
+        {
+            cors.AllowAnyOrigin() 
+                .AllowAnyHeader()
+                .AllowAnyMethod();
+        });
+});;
+
 using (var context = new DatabaseContext())
 {
     context.Database.Migrate();
@@ -64,6 +75,8 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+
+app.UseCors("AllowSpecificOrigin");
 
 app.Seed();
 app.Run();
