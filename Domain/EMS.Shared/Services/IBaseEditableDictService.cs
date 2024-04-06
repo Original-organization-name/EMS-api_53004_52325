@@ -1,9 +1,9 @@
 using EMS.Contracts.Dictionaries;
-using EMS.Shared.RepositoryManagers;
+using EMS.Data.Models;
 
 namespace EMS.Shared.Services;
 
-public interface IMedicalExaminationDictService
+public interface IBaseEditableDictService<T> where T : EditableDictionaryItem
 {
     public Task<IReadOnlyList<DictionaryItemModel>> GetAll();
     public Task<DictionaryItemModel> Add(DictionaryItemDto newItem);

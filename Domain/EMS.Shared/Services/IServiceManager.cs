@@ -1,4 +1,6 @@
-﻿namespace EMS.Shared.Services;
+﻿using EMS.Data.Dictionaries;
+
+namespace EMS.Shared.Services;
 
 public interface IServiceManager
 {
@@ -6,7 +8,4 @@ public interface IServiceManager
     IMedicalExaminationService MedicalExaminationService { get; }
     IQualificationService QualificationService { get; }
     ITrainingService TrainingService { get; }
-    
-    ITrainingDictService TrainingDictService { get; }
-    IMedicalExaminationDictService MedicalExaminationDictService { get; }
 }

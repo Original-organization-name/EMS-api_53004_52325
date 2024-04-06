@@ -5,7 +5,7 @@ using EMS.Shared.RepositoryManagers;
 using EMS.Shared.Services;
 using Mapster;
 
-namespace EMS.Services;
+namespace EMS.Services.Records;
 
 public class MedicalExaminationService : IMedicalExaminationService
 {

@@ -1,7 +1,10 @@
 using EMS.Api;
 using EMS.Api.Middleware;
 using EMS.PersistenceLayer;
+using EMS.PersistenceLayer.Repositories;
 using EMS.Services;
+using EMS.Services.Dictionaries;
+using EMS.Shared.Repositories;
 using EMS.Shared.RepositoryManagers;
 using EMS.Shared.Services;
 using Mapster;
@@ -20,7 +23,8 @@ builder.Services.AddDbContext<DatabaseContext>(ServiceLifetime.Scoped);
 
 builder.Services.AddScoped<IServiceManager, ServiceManager>();
 builder.Services.AddScoped<IRepositoryManager, RepositoryManager>();
-builder.Services.AddScoped<IDictRepositoryManager, DictRepositoryManager>();
+builder.Services.AddScoped(typeof(IBaseEditableDictRepository<>), typeof(BaseEditableDictRepository<>));
+builder.Services.AddScoped(typeof(IBaseEditableDictService<>), typeof(BaseEditableDictService<>));
 
 var typeAdapterConfig = TypeAdapterConfig.GlobalSettings;
 typeAdapterConfig.Scan(typeof(EMS.Contracts.AssemblyReference).Assembly);
