@@ -1,4 +1,5 @@
-﻿using EMS.PersistenceLayer.Repositories;
+﻿using EMS.Data.Dictionaries;
+using EMS.PersistenceLayer.Repositories;
 using EMS.Shared.Repositories;
 using EMS.Shared.RepositoryManagers;
 
@@ -23,4 +24,5 @@ public class RepositoryManager : IRepositoryManager
     public IMedicalExaminationRepository MedicalExaminationRepository => _lazyMedicalExaminationRepository.Value;
     public ITrainingRepository TrainingRepository => _lazyTrainingRepository.Value;
     public IQualificationRepository QualificationRepository => _lazyQualificationRepository.Value;
+    public IBaseEditableDictRepository<MedicalExamItem>? MedicalExamItemRepository { get; set; }
 }

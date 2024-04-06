@@ -8,4 +8,5 @@ public interface IServiceManager
     ITrainingService TrainingService { get; }
     
     ITrainingDictService TrainingDictService { get; }
+    IMedicalExaminationDictService MedicalExaminationDictService { get; }
 }
