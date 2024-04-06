@@ -15,21 +15,21 @@ public class MedicalExaminationsController : ControllerBase
         _service = serviceManager.MedicalExaminationService;
     }
     
-    [HttpGet]
+    [HttpGet(Name = "GetByEmployeeId")]
     public async Task<ActionResult<IEnumerable<MedicalExaminationModel>>> GetMedicalExaminations(Guid employeeId)
     {
         var exams = await _service.GetAll(employeeId);
         return Ok(exams);
     }
 
-    [HttpGet("{id}")]
+    [HttpGet("{id}", Name = "GetById")]
     public async Task<ActionResult<MedicalExaminationModel?>> GetMedicalExaminationById(Guid employeeId, Guid id)
     {
         var medicalExamination = await _service.GetById(id);
         return Ok(medicalExamination);
     }
 
-    [HttpPost]
+    [HttpPost(Name = "Update")]
     public async Task<ActionResult<MedicalExaminationModel>> Post(Guid employeeId, [FromBody] MedicalExaminationDto value)
     {
         var medicalExamination = await _service.Add(employeeId, value);

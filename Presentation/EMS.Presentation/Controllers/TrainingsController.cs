@@ -15,21 +15,21 @@ public class TrainingsController : ControllerBase
         _service = serviceManager.TrainingService;
     }
     
-    [HttpGet]
+    [HttpGet(Name = "GetByEmployeeId")]
     public async Task<ActionResult<IEnumerable<TrainingModel>>> GetTrainings(Guid employeeId)
     {
         var exams = await _service.GetAll(employeeId);
         return Ok(exams);
     }
 
-    [HttpGet("{id}")]
+    [HttpGet("{id}", Name = "GetById")]
     public async Task<ActionResult<TrainingModel?>> GetTrainingById(Guid employeeId, Guid id)
     {
         var training = await _service.GetById(id);
         return Ok(training);
     }
 
-    [HttpPost]
+    [HttpPost(Name = "Add")]
     public async Task<ActionResult<TrainingModel>> Post(Guid employeeId, [FromBody] TrainingDto value)
     {
         var training = await _service.Add(employeeId, value);

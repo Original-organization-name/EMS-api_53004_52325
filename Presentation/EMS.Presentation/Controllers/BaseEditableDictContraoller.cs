@@ -16,28 +16,28 @@ public abstract class BaseEditableDictController<T> : ControllerBase
         _service = service;
     }
     
-    [HttpGet]
+    [HttpGet(Name = "GetAll")]
     public async Task<ActionResult<IEnumerable<DictionaryItemModel>>> GetExaminationDict()
     {
         var examinations = await _service.GetAll();
         return Ok(examinations);
     }
     
-    [HttpPost]
+    [HttpPost(Name = "AddItem")]
     public async Task<ActionResult<DictionaryItemModel>> Post([FromBody] DictionaryItemDto value)
     {
         var examinations = await _service.Add(value);
         return Ok(examinations);
     }
     
-    [HttpPut("{id}")]
+    [HttpPut("{id}", Name = "Update")]
     public async Task<ActionResult<DictionaryItemModel>> Update(Guid id, [FromBody] DictionaryItemDto value)
     {
         var examinations = await _service.Update(id, value);
         return Ok(examinations);
     }
         
-    [HttpDelete("{id}")]
+    [HttpDelete("{id}", Name = "Delete")]
     public async Task<ActionResult<DictionaryItemModel?>> Delete(Guid id)
     {
         var examinations = await _service.Delete(id);
