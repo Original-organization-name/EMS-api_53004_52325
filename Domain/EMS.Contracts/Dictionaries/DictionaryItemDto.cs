@@ -1,11 +1,6 @@
-﻿namespace EMS.Contracts.Dictionaries;
+﻿using System.ComponentModel;
 
-public class DictionaryItemDto
-{
-    public string Value { get; init; }
+namespace EMS.Contracts.Dictionaries;
 
-    public DictionaryItemDto(string value)
-    {
-        Value = value;
-    }
-}
+[DisplayName("DictionaryItem")]
+public record DictionaryItemDto(string Value);

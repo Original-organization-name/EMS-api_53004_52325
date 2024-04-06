@@ -22,5 +22,5 @@ public class DatabaseContext : DbContext
     public DbSet<TrainingItem> TrainingDict { get; set; } = null!;
     
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        => optionsBuilder.UseNpgsql("Host=localhost;Database=ems_test;Username=admin;Password=V22{5ntqm3X");
+        => optionsBuilder.UseNpgsql("Host=postgres;Database=ems_test;Username=admin;Password=V22{5ntqm3X");
 }

@@ -1,3 +1,7 @@
+using System.ComponentModel;
+using System.Reflection;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 using EMS.Api;
 using EMS.Api.Middleware;
 using EMS.PersistenceLayer;
@@ -14,10 +18,18 @@ using Microsoft.EntityFrameworkCore;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers()
-    .AddApplicationPart(typeof(EMS.Presentation.AssemblyReference).Assembly);
+    .AddApplicationPart(typeof(EMS.Presentation.AssemblyReference).Assembly)
+    .AddJsonOptions(options =>
+    {
+        options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
+        options.JsonSerializerOptions.PropertyNamingPolicy = JsonNamingPolicy.CamelCase;
+    });
 
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(c =>
+{                     
+    c.CustomSchemaIds(x => x.GetCustomAttributes<DisplayNameAttribute>().SingleOrDefault()?.DisplayName ?? x.Name);
+});
 
 builder.Services.AddDbContext<DatabaseContext>(ServiceLifetime.Scoped);
 

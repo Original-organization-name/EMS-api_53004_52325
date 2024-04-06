@@ -1,5 +1,8 @@
-﻿namespace EMS.Contracts.Employee;
+﻿using System.ComponentModel;
 
+namespace EMS.Contracts.Employee;
+
+[DisplayName("Address")]
 public record AddressDto(
     string? CountryCode,
     string? City,

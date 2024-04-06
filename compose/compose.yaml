@@ -1,28 +1,49 @@
 version: '3.9'
 
 services:
+  api:
+    build:
+      context: ../
+      dockerfile: EMS.Api/Dockerfile
+    container_name: ems-api
+    restart: unless-stopped
+    ports:
+      - 5000:80
+    networks:
+      - ems
+
   postgres:
     image: postgres:14-alpine
+    restart: unless-stopped
+    networks:
+      - ems
+    environment:
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=V22{5ntqm3X
     ports:
       - 5432:5432
     volumes:
       - ems_data:/var/lib/postgresql/data
-    environment:
-      - POSTGRES_PASSWORD=V22{5ntqm3X
-      - POSTGRES_USER=admin
 
   pgadmin:
     image: dpage/pgadmin4
-    container_name: pgadmin4_container
-    restart: always
-    ports:
-      - "8888:80"
+    container_name: pgadmin4
+    restart: unless-stopped
+    networks:
+      - ems
     environment:
       PGADMIN_DEFAULT_EMAIL: admin@domain-name.com
       PGADMIN_DEFAULT_PASSWORD: V22{5ntqm3X
+    ports:
+      - "8888:80"
     volumes:
       - pgadmin-data:/var/lib/pgadmin
+    depends_on: ["postgres"]
 
 volumes:
   ems_data:
   pgadmin-data:
+
+networks:
+  ems:
+    name: ems

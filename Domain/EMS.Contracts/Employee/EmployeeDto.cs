@@ -1,7 +1,9 @@
-﻿using EMS.Data.Employees.Enum;
+﻿using System.ComponentModel;
+using EMS.Data.Employees.Enum;
 
 namespace EMS.Contracts.Employee;
 
+[DisplayName("Employee")]
 public record EmployeeDto(
     string Name,
     string Surname,
