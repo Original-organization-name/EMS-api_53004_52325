@@ -1,4 +1,4 @@
-﻿namespace EMS.Contracts.Records;
+﻿namespace EMS.DTO.Records;
 
 public record TrainingModel(
     Guid Id,

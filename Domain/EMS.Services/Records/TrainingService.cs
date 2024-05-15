@@ -1,4 +1,4 @@
-﻿using EMS.Contracts.Records;
+﻿using EMS.DTO.Records;
 using EMS.Data.Records;
 using EMS.Shared.Repositories;
 using EMS.Shared.RepositoryManagers;

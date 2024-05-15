@@ -1,6 +1,6 @@
 ﻿using EMS.Data.Employees.Enum;
 
-namespace EMS.Contracts.Employee;
+namespace EMS.DTO.Employee;
 
 public record EmployeeModel(
     Guid Id,

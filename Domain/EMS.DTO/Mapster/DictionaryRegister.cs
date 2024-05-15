@@ -1,8 +1,8 @@
-﻿using EMS.Contracts.Dictionaries;
+﻿using EMS.DTO.Dictionaries;
 using EMS.Data.Dictionaries;
 using Mapster;
 
-namespace EMS.Contracts.Mapster;
+namespace EMS.DTO.Mapster;
 
 public class DictionaryRegister : IRegister
 {

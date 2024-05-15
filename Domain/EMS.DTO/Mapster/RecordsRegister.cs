@@ -1,8 +1,8 @@
-﻿using EMS.Contracts.Records;
+﻿using EMS.DTO.Records;
 using EMS.Data.Records;
 using Mapster;
 
-namespace EMS.Contracts.Mapster;
+namespace EMS.DTO.Mapster;
 
 public class RecordsRegister : IRegister
 {

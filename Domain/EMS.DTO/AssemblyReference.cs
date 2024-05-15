@@ -1,4 +1,4 @@
-﻿namespace EMS.Contracts;
+﻿namespace EMS.DTO;
 
 public static class AssemblyReference
 {

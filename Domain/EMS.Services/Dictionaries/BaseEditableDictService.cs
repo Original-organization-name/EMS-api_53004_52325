@@ -1,4 +1,4 @@
-﻿using EMS.Contracts.Dictionaries;
+﻿using EMS.DTO.Dictionaries;
 using EMS.Data.Models;
 using EMS.Shared.Repositories;
 using EMS.Shared.Services;

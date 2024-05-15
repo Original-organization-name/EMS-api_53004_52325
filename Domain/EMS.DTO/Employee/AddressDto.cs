@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace EMS.Contracts.Employee;
+namespace EMS.DTO.Employee;
 
 [DisplayName("Address")]
 public record AddressDto(

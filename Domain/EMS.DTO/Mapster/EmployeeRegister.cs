@@ -1,8 +1,8 @@
-﻿using EMS.Contracts.Employee;
+﻿using EMS.DTO.Employee;
 using EMS.Data.Employees.Entities;
 using Mapster;
 
-namespace EMS.Contracts.Mapster;
+namespace EMS.DTO.Mapster;
 
 public class EmployeeRegister : IRegister
 {

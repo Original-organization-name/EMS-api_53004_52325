@@ -39,7 +39,7 @@ builder.Services.AddScoped(typeof(IBaseEditableDictRepository<>), typeof(BaseEdi
 builder.Services.AddScoped(typeof(IBaseEditableDictService<>), typeof(BaseEditableDictService<>));
 
 var typeAdapterConfig = TypeAdapterConfig.GlobalSettings;
-typeAdapterConfig.Scan(typeof(EMS.Contracts.AssemblyReference).Assembly);
+typeAdapterConfig.Scan(typeof(EMS.DTO.AssemblyReference).Assembly);
 builder.Services.AddSingleton<IMapper>(new Mapper(typeAdapterConfig));
 
 builder.Services.AddTransient<ExceptionHandlingMiddleware>();

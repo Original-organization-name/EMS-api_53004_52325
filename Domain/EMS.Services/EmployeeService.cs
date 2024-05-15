@@ -1,4 +1,5 @@
-﻿using EMS.Contracts.Employee;
+﻿using System.Linq.Expressions;
+using EMS.DTO.Employee;
 using EMS.Data.Employees;
 using EMS.Data.Exceptions;
 using EMS.Shared.Repositories;
@@ -38,5 +39,15 @@ public class EmployeeService : IEmployeeService
         var newEmployee = await _employeeRepository.AddAsync(employee.Adapt<Employee>());
         await _employeeRepository.SaveChangesAsync();
         return newEmployee.Adapt<EmployeeModel>();
+    }
+
+    public int Count()
+    {
+        return _employeeRepository.GetAll().Count();
+    }
+
+    public int Count(Expression<Func<Employee, bool>> expression)
+    {
+        return _employeeRepository.FindByCondition(expression).Count();
     }
 }

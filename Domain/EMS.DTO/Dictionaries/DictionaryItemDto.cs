@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace EMS.Contracts.Dictionaries;
+namespace EMS.DTO.Dictionaries;
 
 [DisplayName("DictionaryItem")]
 public record DictionaryItemDto(string Value);

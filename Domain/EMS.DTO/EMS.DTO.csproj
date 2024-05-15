@@ -4,6 +4,7 @@
         <TargetFramework>net7.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
+        <RootNamespace>EMS.DTO</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>
@@ -13,6 +14,10 @@
     <ItemGroup>
       <PackageReference Include="Mapster" Version="7.4.1-pre01" />
       <PackageReference Include="Mapster.DependencyInjection" Version="1.0.2-pre01" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Contracts\" />
     </ItemGroup>
 
 </Project>

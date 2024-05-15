@@ -1,4 +1,4 @@
-﻿using EMS.Contracts.Records;
+﻿using EMS.DTO.Records;
 
 namespace EMS.Shared.Services;
 

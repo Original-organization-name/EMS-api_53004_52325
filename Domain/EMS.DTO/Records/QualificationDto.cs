@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace EMS.Contracts.Records;
+namespace EMS.DTO.Records;
 
 [DisplayName("Qualification")]
 public record QualificationDto(

@@ -1,4 +1,4 @@
-using EMS.Contracts.Records;
+using EMS.DTO.Records;
 using EMS.Shared.Services;
 using Microsoft.AspNetCore.Mvc;
 

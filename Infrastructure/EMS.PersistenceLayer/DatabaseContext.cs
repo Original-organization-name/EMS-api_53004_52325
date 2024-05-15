@@ -2,6 +2,7 @@
 using EMS.Data.Employees;
 using EMS.Data.Employees.Entities;
 using EMS.Data.Records;
+using EMS.PersistenceLayer.Interceptors;
 using Microsoft.EntityFrameworkCore;
 
 namespace EMS.PersistenceLayer;
@@ -20,7 +21,10 @@ public class DatabaseContext : DbContext
     public DbSet<QualificationItem> QualificationDict { get; set; } = null!;
     public DbSet<MedicalExamItem> MedicalExamDict { get; set; } = null!;
     public DbSet<TrainingItem> TrainingDict { get; set; } = null!;
-    
+
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        => optionsBuilder.UseNpgsql("Host=postgres;Database=ems_test;Username=admin;Password=V22{5ntqm3X");
+    {
+        optionsBuilder.UseNpgsql("Host=postgres;Database=ems_test;Username=admin;Password=V22{5ntqm3X");
+        optionsBuilder.AddInterceptors(new SaveAuditInterceptor());
+    }
 }

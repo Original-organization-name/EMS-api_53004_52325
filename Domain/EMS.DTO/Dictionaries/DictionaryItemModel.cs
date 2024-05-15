@@ -1,3 +1,3 @@
-﻿namespace EMS.Contracts.Dictionaries;
+﻿namespace EMS.DTO.Dictionaries;
 
 public record DictionaryItemModel(Guid Id, string Value);
