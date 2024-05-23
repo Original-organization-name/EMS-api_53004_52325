@@ -1,6 +1,7 @@
 ﻿using EMS.Data.Dictionaries;
 using EMS.Data.Employees;
 using EMS.Data.Employees.Entities;
+using EMS.Data.Experience;
 using EMS.Data.Records;
 using EMS.PersistenceLayer.Interceptors;
 using Microsoft.EntityFrameworkCore;
@@ -26,5 +27,11 @@ public class DatabaseContext : DbContext
     {
         optionsBuilder.UseNpgsql("Host=postgres;Database=ems_test;Username=admin;Password=V22{5ntqm3X");
         optionsBuilder.AddInterceptors(new SaveAuditInterceptor());
+    }
+    
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        modelBuilder.Entity<Education>()
+            .OwnsOne(p => p.Period);
     }
 }

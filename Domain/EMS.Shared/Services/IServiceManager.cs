@@ -8,4 +8,5 @@ public interface IServiceManager
     IMedicalExaminationService MedicalExaminationService { get; }
     IQualificationService QualificationService { get; }
     ITrainingService TrainingService { get; }
+    IEducationService EducationService { get; }
 }

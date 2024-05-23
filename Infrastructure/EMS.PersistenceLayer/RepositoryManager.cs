@@ -1,5 +1,4 @@
-﻿using EMS.Data.Dictionaries;
-using EMS.PersistenceLayer.Repositories;
+﻿using EMS.PersistenceLayer.Repositories;
 using EMS.Shared.Repositories;
 using EMS.Shared.RepositoryManagers;
 
@@ -11,6 +10,7 @@ public class RepositoryManager : IRepositoryManager
     private readonly Lazy<IMedicalExaminationRepository> _lazyMedicalExaminationRepository;
     private readonly Lazy<ITrainingRepository> _lazyTrainingRepository;
     private readonly Lazy<IQualificationRepository> _lazyQualificationRepository;
+    private readonly Lazy<IEducationRepository> _lazyEducationRepository;
 
     public RepositoryManager(DatabaseContext dbContext)
     {
@@ -18,11 +18,12 @@ public class RepositoryManager : IRepositoryManager
         _lazyTrainingRepository =  new Lazy<ITrainingRepository>(() => new TrainingRepository(dbContext));
         _lazyQualificationRepository =  new Lazy<IQualificationRepository>(() => new QualificationRepository(dbContext));
         _lazyEmployeeRepository = new Lazy<IEmployeeRepository>(() => new EmployeeRepository(dbContext));
+        _lazyEducationRepository = new Lazy<IEducationRepository>(() => new EducationRepository(dbContext));
     }
 
     public IEmployeeRepository EmployeeRepository => _lazyEmployeeRepository.Value;
     public IMedicalExaminationRepository MedicalExaminationRepository => _lazyMedicalExaminationRepository.Value;
     public ITrainingRepository TrainingRepository => _lazyTrainingRepository.Value;
     public IQualificationRepository QualificationRepository => _lazyQualificationRepository.Value;
-    public IBaseEditableDictRepository<MedicalExamItem>? MedicalExamItemRepository { get; set; }
+    public IEducationRepository EducationRepository => _lazyEducationRepository.Value;
 }

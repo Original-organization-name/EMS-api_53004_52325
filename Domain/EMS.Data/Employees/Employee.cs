@@ -2,6 +2,7 @@
 using EMS.Data.Employees.Entities;
 using EMS.Data.Employees.Enum;
 using EMS.Data.Exceptions;
+using EMS.Data.Experience;
 using EMS.Data.Helpers;
 using EMS.Data.Models;
 
@@ -36,6 +37,8 @@ public class Employee : Entity, IAggregateRoot
     public Address? Address { get; set; }
     public List<Contact> Contacts { get; set; } = new();
     public PaymentMethod? PaymentMethod { get; set; } 
+    
+    public List<Education> Education { get; set; } = new();
 }
 
 

@@ -9,4 +9,5 @@ public interface IRepositoryManager
     IMedicalExaminationRepository MedicalExaminationRepository { get; }
     ITrainingRepository TrainingRepository { get; }
     IQualificationRepository QualificationRepository { get; }
+    IEducationRepository EducationRepository { get; }
 }
