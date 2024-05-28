@@ -1,5 +1,5 @@
-﻿using EMS.Data.Experience;
-using EMS.DTO.Experience;
+﻿using EMS.Data.Education;
+using EMS.DTO.Education;
 using EMS.Shared.Repositories;
 using EMS.Shared.RepositoryManagers;
 using EMS.Shared.Services;

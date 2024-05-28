@@ -3,6 +3,7 @@ using System.Reflection;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using EMS.Api;
+using EMS.Api.Filters;
 using EMS.Api.Middleware;
 using EMS.PersistenceLayer;
 using EMS.PersistenceLayer.Repositories;
@@ -28,6 +29,8 @@ builder.Services.AddControllers()
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
 {                     
+    c.SupportNonNullableReferenceTypes();
+    c.SchemaFilter<RequiredSchemaFilter>();
     c.CustomSchemaIds(x => x.GetCustomAttributes<DisplayNameAttribute>().SingleOrDefault()?.DisplayName ?? x.Name);
 });
 

@@ -1,9 +1,9 @@
-﻿using EMS.Data.Experience.Enums;
-using EMS.Data.Models;
+﻿using EMS.Data.Education.Enums;
 
-namespace EMS.DTO.Experience;
+namespace EMS.DTO.Education;
 
-public record EducationDto(
+public record EducationModel(
+    Guid Id,
     string SchoolName,
     SchoolType Type,
     DateTime Start,

@@ -1,4 +1,4 @@
-﻿namespace EMS.Data.Experience.Enums;
+﻿namespace EMS.Data.Education.Enums;
 
 public enum SchoolType
 {

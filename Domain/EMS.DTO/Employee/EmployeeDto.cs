@@ -12,6 +12,7 @@ public record EmployeeDto(
     DateTime? Birthdate,
     Gender? Gender,
     AddressDto? Address,
-    List<ContactDto>? Contacts,
+    string? PhoneNumber,
+    string? Email,
     PaymentMethodDto? PaymentMethod);
     

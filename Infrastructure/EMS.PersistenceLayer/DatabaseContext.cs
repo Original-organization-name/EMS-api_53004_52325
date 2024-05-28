@@ -1,7 +1,7 @@
 ﻿using EMS.Data.Dictionaries;
+using EMS.Data.Education;
 using EMS.Data.Employees;
 using EMS.Data.Employees.Entities;
-using EMS.Data.Experience;
 using EMS.Data.Records;
 using EMS.PersistenceLayer.Interceptors;
 using Microsoft.EntityFrameworkCore;
@@ -12,7 +12,6 @@ public class DatabaseContext : DbContext
 {
     public DbSet<Employee> Employees { get; set; } = null!;
     public DbSet<Address> Addresses { get; set; } = null!;
-    public DbSet<Contact> Contacts { get; set; } = null!;
     public DbSet<PaymentMethod> PaymentMethods { get; set; } = null!;
     
     public DbSet<MedicalExamination> MedicalExaminations { get; set; } = null!;

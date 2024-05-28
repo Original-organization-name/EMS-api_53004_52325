@@ -1,7 +1,7 @@
-﻿using EMS.Data.Experience.Enums;
+﻿using EMS.Data.Education.Enums;
 using EMS.Data.Models;
 
-namespace EMS.Data.Experience;
+namespace EMS.Data.Education;
 
 public class Education : Entity
 {

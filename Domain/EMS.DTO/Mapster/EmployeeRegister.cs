@@ -25,22 +25,6 @@ public class EmployeeRegister : IRegister
             .Map(dest => dest.Street, src => src.Street)
             .Map(dest => dest.HouseNumber, src => src.HouseNumber)
             .Map(dest => dest.ApartmentNumber, src => src.ApartmentNumber);
-            
-        config.NewConfig<ContactDto, Contact>()
-            .Map(dest => dest.Type, src => src.Type)
-            .Map(dest => dest.Data, src => src.Data)
-            .Map(dest => dest.Privacy, src => src.Privacy);
-        
-        config.NewConfig<Contact, ContactDto>()
-            .Map(dest => dest.Type, src => src.Type)
-            .Map(dest => dest.Data, src => src.Data)
-            .Map(dest => dest.Privacy, src => src.Privacy);
-        
-        config.NewConfig<Contact, ContactModel>()
-            .Map(dest => dest.Id, src => src.Id)
-            .Map(dest => dest.Type, src => src.Type)
-            .Map(dest => dest.Data, src => src.Data)
-            .Map(dest => dest.Privacy, src => src.Privacy);
         
         config.NewConfig<PaymentMethodDto, PaymentMethod>()
             .Map(dest => dest.Type, src => src.Type)
@@ -58,7 +42,8 @@ public class EmployeeRegister : IRegister
             .Map(dest => dest.Birthdate, src => src.Birthdate)
             .Map(dest => dest.Gender, src => src.Gender)
             .Map(dest => dest.Address, src => src.Address.Adapt<Address>())
-            .Map(dest => dest.Contacts, src => src.Contacts.Adapt<List<Contact>>())
+            .Map(dest => dest.Email, src => src.Email)
+            .Map(dest => dest.PhoneNumber, src => src.PhoneNumber)
             .Map(dest => dest.PaymentMethod, src => src.PaymentMethod.Adapt<PaymentMethod>());
             
         config.NewConfig<Data.Employees.Employee, EmployeeModel>()
@@ -70,7 +55,8 @@ public class EmployeeRegister : IRegister
             .Map(dest => dest.Birthdate, src => src.Birthdate)
             .Map(dest => dest.Gender, src => src.Gender)
             .Map(dest => dest.Address, src => src.Address.Adapt<AddressDto>())
-            .Map(dest => dest.Contacts, src => src.Contacts.Adapt<List<ContactModel>>())
+            .Map(dest => dest.Email, src => src.Email)
+            .Map(dest => dest.PhoneNumber, src => src.PhoneNumber)
             .Map(dest => dest.PaymentMethod, src => src.PaymentMethod.Adapt<PaymentMethodDto>());
     }
 }

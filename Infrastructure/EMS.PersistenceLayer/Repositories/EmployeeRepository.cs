@@ -14,8 +14,7 @@ public class EmployeeRepository : BaseRepository<Employee>, IEmployeeRepository
     {
         return base.GetAll()
             .Include(employee => employee.Address)
-            .Include(employee => employee.PaymentMethod)
-            .Include(employee => employee.Contacts);
+            .Include(employee => employee.PaymentMethod);
     }
 
     public async Task<bool> IsPeselExist(string? pesel)

@@ -11,5 +11,6 @@ public record EmployeeModel(
     DateTime? Birthdate,
     Gender? Gender,
     AddressDto? Address,
-    List<ContactModel> Contacts,
+    string? PhoneNumber,
+    string? Email,
     PaymentMethodDto? PaymentMethod);

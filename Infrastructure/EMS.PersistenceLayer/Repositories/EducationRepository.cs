@@ -1,4 +1,4 @@
-﻿using EMS.Data.Experience;
+﻿using EMS.Data.Education;
 using EMS.Shared.Repositories;
 
 namespace EMS.PersistenceLayer.Repositories;

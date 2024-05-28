@@ -1,4 +1,4 @@
-﻿using EMS.Data.Experience;
+﻿using EMS.Data.Education;
 
 namespace EMS.Shared.Repositories;
 

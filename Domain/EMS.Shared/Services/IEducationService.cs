@@ -1,4 +1,4 @@
-﻿using EMS.DTO.Experience;
+﻿using EMS.DTO.Education;
 
 namespace EMS.Shared.Services;
 
