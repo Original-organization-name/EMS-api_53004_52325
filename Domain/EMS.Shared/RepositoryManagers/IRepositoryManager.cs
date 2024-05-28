@@ -10,4 +10,5 @@ public interface IRepositoryManager
     ITrainingRepository TrainingRepository { get; }
     IQualificationRepository QualificationRepository { get; }
     IEducationRepository EducationRepository { get; }
+    IOccupationDictRepository OccupationDictRepository { get; }
 }
