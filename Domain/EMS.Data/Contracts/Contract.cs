@@ -15,6 +15,9 @@ public class Contract : Entity
 
     public Guid? PositionItemId { get; set; }
     public PositionItem? PositionItem { get; set; }
+    
+    public Guid? WorkplaceItemId { get; set; }
+    public WorkplaceItem? WorkplaceItem { get; set; }
 
     public string? OccupationCodeItemId { get; set; }
     public OccupationCodeItem? OccupationCodeItem { get; set; }

@@ -10,4 +10,5 @@ public interface IServiceManager
     ITrainingService TrainingService { get; }
     IEducationService EducationService { get; }
     IOccupationDictService OccupationDictService { get; }
+    IContractService ContractService { get; }
 }

@@ -1,4 +1,5 @@
-﻿using EMS.Services.Dictionaries;
+﻿using EMS.Services.Contracts;
+using EMS.Services.Dictionaries;
 using EMS.Services.Experience;
 using EMS.Services.Records;
 using EMS.Shared.RepositoryManagers;
@@ -14,6 +15,7 @@ public class ServiceManager : IServiceManager
     private readonly Lazy<ITrainingService> _lazyTrainingService;
     private readonly Lazy<IEducationService> _lazyEducationService;
     private readonly Lazy<IOccupationDictService> _lazyOccupationDictService;
+    private readonly Lazy<IContractService> _lazyContractService;
         
     public ServiceManager(IRepositoryManager repositoryManager)
     {
@@ -23,6 +25,7 @@ public class ServiceManager : IServiceManager
         _lazyTrainingService = new Lazy<ITrainingService>(() => new TrainingService(repositoryManager));
         _lazyEducationService = new Lazy<IEducationService>(() => new EducationService(repositoryManager));
         _lazyOccupationDictService = new Lazy<IOccupationDictService>(() => new OccupationDictService(repositoryManager));
+        _lazyContractService = new Lazy<IContractService>(() => new ContractService(repositoryManager));
     }
 
     public IEmployeeService EmployeeService => _lazyEmployeeService.Value;
@@ -31,4 +34,5 @@ public class ServiceManager : IServiceManager
     public ITrainingService TrainingService => _lazyTrainingService.Value;
     public IEducationService EducationService => _lazyEducationService.Value;
     public IOccupationDictService OccupationDictService => _lazyOccupationDictService.Value;
+    public IContractService ContractService => _lazyContractService.Value;
 }
