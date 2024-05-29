@@ -33,7 +33,7 @@ public abstract class BaseRepository<T> : IBaseRepository<T> where T : Entity
 
     public virtual IQueryable<T> FindByCondition(Expression<Func<T, bool>> expression)
     {
-        return _repositoryContext.Where(expression).AsNoTracking();
+        return GetAll().Where(expression).AsNoTracking();
     }
 
     public async Task<T?> AddAsync(T? entity)

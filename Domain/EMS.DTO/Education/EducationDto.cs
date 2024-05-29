@@ -1,7 +1,9 @@
-﻿using EMS.Data.Education.Enums;
+﻿using System.ComponentModel;
+using EMS.Data.Education.Enums;
 
 namespace EMS.DTO.Education;
 
+[DisplayName("Education")]
 public record EducationDto(
     string SchoolName,
     SchoolType Type,
