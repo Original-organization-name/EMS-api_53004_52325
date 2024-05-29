@@ -1,6 +1,6 @@
 ﻿using EMS.DTO.Employee;
 
-namespace EMS.Presentation.ReslutModels;
+namespace EMS.Presentation.ResultModels;
 
 public record DashboardAnalytics(
     int TotalEmployeeCount = 0,

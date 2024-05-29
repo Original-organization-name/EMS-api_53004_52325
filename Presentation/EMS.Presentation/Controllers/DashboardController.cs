@@ -1,4 +1,4 @@
-﻿using EMS.Presentation.ReslutModels;
+﻿using EMS.Presentation.ResultModels;
 using EMS.Shared.Services;
 using Microsoft.AspNetCore.Mvc;
 
