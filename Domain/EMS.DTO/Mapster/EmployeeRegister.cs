@@ -15,7 +15,7 @@ public class EmployeeRegister : IRegister
             .Map(dest => dest.PostCode, src => src.PostCode)
             .Map(dest => dest.Street, src => src.Street)
             .Map(dest => dest.HouseNumber, src => src.HouseNumber)
-            .Map(dest => dest.ApartmentNumber, src => src.ApartmentNumber);
+            .Map(dest => dest.FlatNumber, src => src.FlatNumber);
         
         config.NewConfig<Address, AddressDto>()
             .Map(dest => dest.CountryCode, src => src.CountryCode)
@@ -24,7 +24,7 @@ public class EmployeeRegister : IRegister
             .Map(dest => dest.PostCode, src => src.PostCode)
             .Map(dest => dest.Street, src => src.Street)
             .Map(dest => dest.HouseNumber, src => src.HouseNumber)
-            .Map(dest => dest.ApartmentNumber, src => src.ApartmentNumber);
+            .Map(dest => dest.FlatNumber, src => src.FlatNumber);
         
         config.NewConfig<PaymentMethodDto, PaymentMethod>()
             .Map(dest => dest.Type, src => src.Type)

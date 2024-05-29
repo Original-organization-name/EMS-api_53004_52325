@@ -67,7 +67,7 @@ namespace EMS.PersistenceLayer.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
-                    b.Property<string>("ApartmentNumber")
+                    b.Property<string>("FlatNumber")
                         .HasColumnType("text");
 
                     b.Property<string>("City")

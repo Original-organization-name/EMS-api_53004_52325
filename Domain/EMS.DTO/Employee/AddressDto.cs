@@ -10,4 +10,4 @@ public record AddressDto(
     string? PostCode,
     string? Street,
     string? HouseNumber,
-    string? ApartmentNumber);
+    string? FlatNumber);

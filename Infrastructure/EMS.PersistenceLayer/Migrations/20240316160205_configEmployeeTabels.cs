@@ -46,7 +46,7 @@ namespace EMS.PersistenceLayer.Migrations
                     PostCode = table.Column<string>(type: "text", nullable: true),
                     Street = table.Column<string>(type: "text", nullable: true),
                     HouseNumber = table.Column<string>(type: "text", nullable: true),
-                    ApartmentNumber = table.Column<string>(type: "text", nullable: true)
+                    FlatNumber = table.Column<string>(type: "text", nullable: true)
                 },
                 constraints: table =>
                 {

@@ -10,5 +10,5 @@ public class Address : Entity
     public string? PostCode { get; set; }
     public string? Street { get; set; }
     public string? HouseNumber { get; set; }
-    public string? ApartmentNumber { get; set; }
+    public string? FlatNumber { get; set; }
 }
