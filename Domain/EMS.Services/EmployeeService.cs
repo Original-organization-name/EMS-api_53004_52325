@@ -44,12 +44,6 @@ public class EmployeeService : IEmployeeService
 
     public async Task<EmployeeModel> Add(EmployeeDto employee)
     {
-        var isPeselExist = await _employeeRepository.IsPeselExist(employee.Pesel);
-        if (isPeselExist)
-        {
-            throw new PeselExistException(employee.Pesel!);
-        }
-        
         var newEmployee = await _employeeRepository.AddAsync(employee.Adapt<Employee>());
         await _employeeRepository.SaveChangesAsync();
         return newEmployee.Adapt<EmployeeModel>();

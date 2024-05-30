@@ -65,4 +65,20 @@ public class ContractService : IContractService
 
         return currentContract.Sum(x => x.CalcMonthSalary());
     }
+
+    public int GetActiveContractsCount()
+    {
+        return _repository
+            .FindByCondition(x => x.TerminationDate == null || x.TerminationDate >= DateTime.Today)
+            .Count();
+    }
+
+    public int GetExpiresContractsCount()
+    {
+        return _repository
+            .FindByCondition(x => x.TerminationDate != null && 
+                                  x.TerminationDate >= DateTime.Today &&
+                                  ((DateTime)x.TerminationDate).AddDays(-14) <= DateTime.Today)
+            .Count();
+    }
 }

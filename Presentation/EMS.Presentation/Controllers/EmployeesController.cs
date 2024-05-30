@@ -57,6 +57,11 @@ public class EmployeesController : ControllerBase
             {
                 await _serviceManager.EmployeeService.AddImage(employee.Id, request.ImageBase64);
             }
+            
+            if (request.Contract is not null)
+            {
+                await _serviceManager.ContractService.Add(employee.Id, request.Contract);
+            }
         }
         
         return CreatedAtAction(nameof(GetEmployeeById), new { id = employee.Id }, employee);

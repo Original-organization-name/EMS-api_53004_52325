@@ -19,7 +19,8 @@ public class ContractRegister : IRegister
             .Map(dest => dest.FteNumerator, src => src.FteNumerator)
             .Map(dest => dest.FteDenominator, src => src.FteDenominator)
             .Map(dest => dest.Salary, src => src.Salary)
-            .Map(dest => dest.SalaryType, src => src.SalaryType);
+            .Map(dest => dest.SalaryType, src => src.SalaryType)
+            .Map(dest => dest.ContractType, src => src.ContractType);
         
         
         config.NewConfig<Contract, ContractModel>()
@@ -36,6 +37,7 @@ public class ContractRegister : IRegister
             .Map(dest => dest.FteNumerator, src => src.FteNumerator)
             .Map(dest => dest.FteDenominator, src => src.FteDenominator)
             .Map(dest => dest.Salary, src => src.Salary)
-            .Map(dest => dest.SalaryType, src => src.SalaryType);
+            .Map(dest => dest.SalaryType, src => src.SalaryType)
+            .Map(dest => dest.ContractType, src => src.ContractType);
     }
 }

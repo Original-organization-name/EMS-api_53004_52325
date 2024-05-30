@@ -18,5 +18,6 @@ public record ContractModel(
     int FteNumerator,
     int FteDenominator,
     decimal Salary,
-    SalaryType SalaryType
+    SalaryType SalaryType,
+    ContractType ContractType
 );

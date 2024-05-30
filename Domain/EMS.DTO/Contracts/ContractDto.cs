@@ -15,5 +15,6 @@ public record ContractDto(
     int FteNumerator,
     int FteDenominator,
     decimal Salary,
-    SalaryType SalaryType
+    SalaryType SalaryType,
+    ContractType ContractType
 );

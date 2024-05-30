@@ -31,6 +31,8 @@ public class Contract : Entity
     public required decimal Salary { get; set; }
     public SalaryType SalaryType { get; set; } = SalaryType.Monthly;
 
+    public ContractType ContractType { get; set; } = ContractType.Employment;
+    
     public decimal CalcMonthSalary()
     {
         return SalaryType == SalaryType.Monthly
