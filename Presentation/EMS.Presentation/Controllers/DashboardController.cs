@@ -31,12 +31,13 @@ public class DashboardController : ControllerBase
                 Name = employee.Name, 
                 Surname = employee.Surname,
                 Pesel = employee.Pesel,
+                ImageName = employee.ImageFileName,
                 EmploymentDate = contract?.EmploymentDate,
                 TerminationDate = contract?.TerminationDate,
                 Salary = contract?.Salary, 
                 SalaryType = contract?.SalaryType,
                 FteDenominator = contract?.FteDenominator,
-                FteNumerator = contract?.FteNumerator
+                FteNumerator = contract?.FteNumerator,
             });
         }
         
@@ -46,6 +47,8 @@ public class DashboardController : ControllerBase
             AddInLastMonth = _serviceManager.EmployeeService.Count(x => x.CreatedAt > DateTime.Today.AddMonths(-1)),
             TotalPayroll = _serviceManager.ContractService.CountTotalPayroll(),
             RecentAddedEmployees = recentModels,
+            ActiveContractsCount = _serviceManager.ContractService.GetActiveContractsCount(),
+            ExpiresContractCount = _serviceManager.ContractService.GetExpiresContractsCount(),
         };
         return Ok(result);
     }

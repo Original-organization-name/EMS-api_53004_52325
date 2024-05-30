@@ -40,6 +40,8 @@ public class Employee : Entity, IAggregateRoot
     public PaymentMethod? PaymentMethod { get; set; } 
     
     public List<Education.Education> Education { get; set; } = new();
+    
+    public string? ImageFileName { get; set; }
 }
 
 

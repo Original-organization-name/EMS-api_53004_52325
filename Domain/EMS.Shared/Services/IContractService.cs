@@ -10,4 +10,6 @@ public interface IContractService
     Task<ContractModel> Add(Guid employeeId, ContractDto contract);
     
     decimal CountTotalPayroll();
+    int GetActiveContractsCount();
+    int GetExpiresContractsCount();
 }

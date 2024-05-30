@@ -1,6 +1,4 @@
-﻿using EMS.Data.Dictionaries;
-
-namespace EMS.Shared.Services;
+﻿namespace EMS.Shared.Services;
 
 public interface IServiceManager
 {
@@ -11,4 +9,5 @@ public interface IServiceManager
     IEducationService EducationService { get; }
     IOccupationDictService OccupationDictService { get; }
     IContractService ContractService { get; }
+    IImageService ImageService { get; }
 }

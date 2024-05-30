@@ -1,5 +1,4 @@
-﻿using EMS.Data.Dictionaries;
-using EMS.PersistenceLayer.Repositories;
+﻿using EMS.PersistenceLayer.Repositories;
 using EMS.Shared.Repositories;
 using EMS.Shared.RepositoryManagers;
 
@@ -14,6 +13,7 @@ public class RepositoryManager : IRepositoryManager
     private readonly Lazy<IEducationRepository> _lazyEducationRepository;
     private readonly Lazy<IOccupationDictRepository> _lazyOccupationRepository;
     private readonly Lazy<IContractRepository> _lazyContractRepository;
+    private readonly Lazy<IImageRepository> _lazyImageRepository;
 
     public RepositoryManager(DatabaseContext dbContext)
     {
@@ -24,6 +24,7 @@ public class RepositoryManager : IRepositoryManager
         _lazyEducationRepository = new Lazy<IEducationRepository>(() => new EducationRepository(dbContext));
         _lazyOccupationRepository = new Lazy<IOccupationDictRepository>(() => new OccupationDictRepository(dbContext));
         _lazyContractRepository = new Lazy<IContractRepository>(() => new ContractRepository(dbContext));
+        _lazyImageRepository = new Lazy<IImageRepository>(() => new ImageRepository(dbContext));
     }
 
     public IEmployeeRepository EmployeeRepository => _lazyEmployeeRepository.Value;
@@ -33,4 +34,5 @@ public class RepositoryManager : IRepositoryManager
     public IEducationRepository EducationRepository => _lazyEducationRepository.Value;
     public IOccupationDictRepository OccupationDictRepository => _lazyOccupationRepository.Value;
     public IContractRepository ContractRepository => _lazyContractRepository.Value;
+    public IImageRepository ImageRepository => _lazyImageRepository.Value;
 }

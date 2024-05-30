@@ -1,6 +1,7 @@
 ﻿using System.Linq.Expressions;
 using EMS.DTO.Employee;
 using EMS.Data.Employees;
+using EMS.Data.Employees.Entities;
 using EMS.Data.Exceptions;
 using EMS.Shared.Repositories;
 using EMS.Shared.RepositoryManagers;
@@ -12,10 +13,14 @@ namespace EMS.Services;
 public class EmployeeService : IEmployeeService
 {
     private readonly IEmployeeRepository _employeeRepository;
+    private readonly IImageRepository _imageRepository;
 
-    public EmployeeService(IRepositoryManager repositoryManager) => 
+    public EmployeeService(IRepositoryManager repositoryManager)
+    {
         _employeeRepository = repositoryManager.EmployeeRepository;
-    
+        _imageRepository = repositoryManager.ImageRepository;
+    }
+
     public async Task<IReadOnlyList<EmployeeModel>> GetAll()
     {
         var employees = _employeeRepository.GetAll();
@@ -24,7 +29,10 @@ public class EmployeeService : IEmployeeService
 
     public async Task<IEnumerable<EmployeeModel>> GetRecentAdded()
     {
-        var employees = _employeeRepository.FindByCondition(x => x.CreatedAt.AddDays(14) >= DateTime.Today).ToList();
+        var employees = _employeeRepository
+            .FindByCondition(x => x.CreatedAt.AddDays(14) >= DateTime.Today)
+            .OrderByDescending(x => x.CreatedAt)
+            .ToList();
         return employees?.Select(employee => employee.Adapt<EmployeeModel>()).ToList() ?? new List<EmployeeModel>();
     }
 
@@ -55,5 +63,21 @@ public class EmployeeService : IEmployeeService
     public int Count(Expression<Func<Employee, bool>> expression)
     {
         return _employeeRepository.FindByCondition(expression).Count();
+    }
+
+    public async Task<string?> AddImage(Guid employeeId, string imageBase64)
+    {
+        var employee = _employeeRepository.FindByConditionWithTracking(x => x.Id == employeeId).FirstOrDefault();
+        if (employee is null) return null;
+        
+        var image = Image.FromBase64String(imageBase64);
+        if (image is null) return null;
+        
+        employee.ImageFileName = image.Name;
+        await _imageRepository.AddAsync(image);
+        await _imageRepository.SaveChangesAsync();
+        await _employeeRepository.SaveChangesAsync();
+
+        return image.Name;
     }
 }

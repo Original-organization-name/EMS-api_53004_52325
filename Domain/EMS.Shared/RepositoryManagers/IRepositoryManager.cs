@@ -1,5 +1,4 @@
-﻿using EMS.Data.Dictionaries;
-using EMS.Shared.Repositories;
+﻿using EMS.Shared.Repositories;
 
 namespace EMS.Shared.RepositoryManagers;
 
@@ -12,4 +11,5 @@ public interface IRepositoryManager
     IEducationRepository EducationRepository { get; }
     IOccupationDictRepository OccupationDictRepository { get; }
     IContractRepository ContractRepository { get; }
+    IImageRepository ImageRepository { get; }
 }

@@ -15,6 +15,7 @@ public class DatabaseContext : DbContext
     public DbSet<Employee> Employees { get; set; } = null!;
     public DbSet<Address> Addresses { get; set; } = null!;
     public DbSet<PaymentMethod> PaymentMethods { get; set; } = null!;
+    public DbSet<Image> Images { get; set; } = null!;
     
     // Records
     public DbSet<MedicalExamination> MedicalExaminations { get; set; } = null!;

@@ -57,6 +57,7 @@ public class EmployeeRegister : IRegister
             .Map(dest => dest.Address, src => src.Address.Adapt<AddressDto>())
             .Map(dest => dest.Email, src => src.Email)
             .Map(dest => dest.PhoneNumber, src => src.PhoneNumber)
-            .Map(dest => dest.PaymentMethod, src => src.PaymentMethod.Adapt<PaymentMethodDto>());
+            .Map(dest => dest.PaymentMethod, src => src.PaymentMethod.Adapt<PaymentMethodDto>())
+            .Map(dest => dest.ImageFileName, src => src.ImageFileName);
     }
 }

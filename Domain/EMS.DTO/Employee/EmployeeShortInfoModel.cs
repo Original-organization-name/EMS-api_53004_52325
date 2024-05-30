@@ -5,6 +5,7 @@ namespace EMS.DTO.Employee;
 public class EmployeeShortInfoModel
 {
     public Guid Id { get; init; }
+    public string? ImageName { get; set; }
     public required string Name { get; init; }
     public required string Surname { get; init; }
     public string? Pesel { get; init; }

@@ -13,4 +13,5 @@ public record EmployeeModel(
     AddressDto? Address,
     string? PhoneNumber,
     string? Email,
-    PaymentMethodDto? PaymentMethod);
+    PaymentMethodDto? PaymentMethod,
+    string? ImageFileName);
