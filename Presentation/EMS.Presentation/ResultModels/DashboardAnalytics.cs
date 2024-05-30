@@ -6,5 +6,5 @@ public record DashboardAnalytics(
     int TotalEmployeeCount = 0,
     int AddInLastMonth = 0,
     decimal TotalPayroll = 0,
-    List<EmployeeShortInfoModel>? RecentAddedEmployees = null,
+    IEnumerable<EmployeeShortInfoModel>? RecentAddedEmployees = null,
     List<string>? NearExpiryContract  = null);

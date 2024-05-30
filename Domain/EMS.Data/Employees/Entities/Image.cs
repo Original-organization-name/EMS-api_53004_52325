@@ -1,6 +1,8 @@
-﻿namespace EMS.Data.Employees.Entities;
+﻿using EMS.Data.Models;
 
-public class Image
+namespace EMS.Data.Employees.Entities;
+
+public class Image : Entity
 {
-    
+    public byte[] Content { get; set; }
 }

@@ -22,6 +22,12 @@ public class EmployeeService : IEmployeeService
         return employees.Select(employee => employee.Adapt<EmployeeModel>()).ToList();
     }
 
+    public async Task<IEnumerable<EmployeeModel>> GetRecentAdded()
+    {
+        var employees = _employeeRepository.FindByCondition(x => x.CreatedAt.AddDays(14) >= DateTime.Today).ToList();
+        return employees?.Select(employee => employee.Adapt<EmployeeModel>()).ToList() ?? new List<EmployeeModel>();
+    }
+
     public async Task<EmployeeModel?> GetById(Guid id)
     {
         var employee = await _employeeRepository.GetByIdAsync(id);

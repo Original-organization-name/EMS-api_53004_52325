@@ -32,6 +32,7 @@ builder.Services.AddSwaggerGen(c =>
     c.SupportNonNullableReferenceTypes();
     c.SchemaFilter<RequiredSchemaFilter>();
     c.CustomSchemaIds(x => x.GetCustomAttributes<DisplayNameAttribute>().SingleOrDefault()?.DisplayName ?? x.Name);
+    c.UseAllOfToExtendReferenceSchemas();
 });
 
 builder.Services.AddDbContext<DatabaseContext>(ServiceLifetime.Scoped);
@@ -82,4 +83,11 @@ app.MapControllers();
 app.UseCors("AllowSpecificOrigin");
 
 app.Seed();
+
+using (var serviceScope = app.Services.CreateScope())
+{
+    var dbContext = serviceScope.ServiceProvider.GetRequiredService<DatabaseContext>();
+    dbContext.Database.Migrate();
+}
+
 app.Run();

@@ -19,6 +19,25 @@ public class ContractService : IContractService
         return _repository.GetAll(employeeId).Select(exam => exam.Adapt<ContractModel>()).ToList();
     }
 
+    public ContractModel? GetCurrentOrLatestContract(Guid employeeId)
+    {
+        var result = _repository
+            .GetAll(employeeId)
+            .Where(x => x.TerminationDate == null || x.TerminationDate >= DateTime.Today)
+            .OrderBy(x => x.StartDate)
+            .FirstOrDefault();
+        
+        if(result is null){
+            result = _repository
+                .GetAll(employeeId)
+                .Where(x => x.TerminationDate != null || x.TerminationDate < DateTime.Today)
+                .OrderByDescending(x => x.TerminationDate)
+                .FirstOrDefault();
+        }
+
+        return result?.Adapt<ContractModel>();
+    }
+
     public async Task<ContractModel?> GetById(Guid id)
     {
         var contract = await _repository.GetByIdAsync(id);
@@ -34,5 +53,16 @@ public class ContractService : IContractService
         await _repository.SaveChangesAsync();
         
         return contract.Adapt<ContractModel>();
+    }
+
+    public decimal CountTotalPayroll()
+    {
+        var currentContract = _repository
+            .FindByCondition(x => 
+                (x.TerminationDate == null || x.TerminationDate >= DateTime.Today) &&
+                x.StartDate <= DateTime.Today)
+            .ToList();
+
+        return currentContract.Sum(x => x.CalcMonthSalary());
     }
 }

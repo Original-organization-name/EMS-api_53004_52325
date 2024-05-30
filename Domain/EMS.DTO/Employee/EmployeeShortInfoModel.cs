@@ -1,13 +1,17 @@
-﻿namespace EMS.DTO.Employee;
+﻿using EMS.Data.Contracts.Enums;
 
-public record EmployeeShortInfoModel(
-    Guid Id,
-    string Name, 
-    string Surname,
-    string? Pesel,
-    DateTime EmploymentDate,
-    decimal Salary, 
-    string SalaryType,
-    string ContractType,
-    int FteDenominator,
-    int FteNumerator);
+namespace EMS.DTO.Employee;
+
+public class EmployeeShortInfoModel
+{
+    public Guid Id { get; init; }
+    public required string Name { get; init; }
+    public required string Surname { get; init; }
+    public string? Pesel { get; init; }
+    public DateTime? EmploymentDate { get; init; }
+    public DateTime? TerminationDate { get; init; }
+    public decimal? Salary { get; init; }
+    public SalaryType? SalaryType { get; init; }
+    public int? FteDenominator { get; init; }
+    public int? FteNumerator { get; init; }
+}

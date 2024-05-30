@@ -7,6 +7,7 @@ namespace EMS.Shared.Services;
 public interface IEmployeeService
 {
     Task<IReadOnlyList<EmployeeModel>> GetAll();
+    Task<IEnumerable<EmployeeModel>> GetRecentAdded();
     Task<EmployeeModel?> GetById(Guid id);
     Task<EmployeeModel> Add(EmployeeDto employee);
     
