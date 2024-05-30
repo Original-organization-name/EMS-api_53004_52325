@@ -1,5 +1,7 @@
-﻿using EMS.DTO.Records;
+﻿using EMS.Data.Extensions;
+using EMS.DTO.Records;
 using EMS.Data.Records;
+using EMS.Data.Shared;
 using EMS.Shared.Repositories;
 using EMS.Shared.RepositoryManagers;
 using EMS.Shared.Services;
@@ -39,5 +41,12 @@ public class TrainingService : ITrainingService
         training = await _repository.AddAsync(training);
         await _repository.SaveChangesAsync();
         return training.Adapt<TrainingModel>();
+    }
+
+    public async Task<Status?> GetBhpStatus(Guid employeeId)
+    {
+        return _repository.GetAll(employeeId)
+            .OrderByDescending(x => x.ExpirationDate ?? DateTime.MaxValue)
+            .FirstOrDefault()?.ExpirationDate.GetStatus();
     }
 }

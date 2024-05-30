@@ -32,6 +32,7 @@ public class DashboardController : ControllerBase
                 Surname = employee.Surname,
                 Pesel = employee.Pesel,
                 ImageName = employee.ImageFileName,
+                ContractType = contract?.ContractType,
                 EmploymentDate = contract?.EmploymentDate,
                 TerminationDate = contract?.TerminationDate,
                 Salary = contract?.Salary, 

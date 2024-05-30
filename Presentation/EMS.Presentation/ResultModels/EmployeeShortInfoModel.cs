@@ -1,6 +1,6 @@
 ﻿using EMS.Data.Contracts.Enums;
 
-namespace EMS.DTO.Employee;
+namespace EMS.Presentation.ResultModels;
 
 public class EmployeeShortInfoModel
 {
@@ -9,6 +9,7 @@ public class EmployeeShortInfoModel
     public required string Name { get; init; }
     public required string Surname { get; init; }
     public string? Pesel { get; init; }
+    public ContractType? ContractType { get; init; }
     public DateTime? EmploymentDate { get; init; }
     public DateTime? TerminationDate { get; init; }
     public decimal? Salary { get; init; }

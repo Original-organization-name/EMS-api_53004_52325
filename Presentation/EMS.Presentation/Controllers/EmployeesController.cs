@@ -1,5 +1,6 @@
 using EMS.DTO.Employee;
 using EMS.Presentation.RequestModels;
+using EMS.Presentation.ResultModels;
 using EMS.Shared.Services;
 using Microsoft.AspNetCore.Mvc;
 
@@ -17,10 +18,36 @@ public class EmployeesController : ControllerBase
     }
     
     [HttpGet(Name = "GetAllEmployees")]
-    public async Task<ActionResult<IEnumerable<EmployeeModel>>> GetEmployees()
+    public async Task<ActionResult<IEnumerable<EmployeeTableInfo>>> GetEmployees()
     {
         var employees = await _serviceManager.EmployeeService.GetAll();
-        return Ok(employees);
+        var result = new List<EmployeeTableInfo>();
+        
+        foreach (var employee in employees)
+        {
+            var contract = _serviceManager.ContractService.GetCurrentOrLatestContract(employee.Id);
+            result.Add(new EmployeeTableInfo()
+            {
+                Id = employee.Id,
+                Name = employee.Name, 
+                Surname = employee.Surname,
+                Pesel = employee.Pesel,
+                ImageName = employee.ImageFileName,
+                Position = contract?.PositionItemName,
+                Workplace = contract?.WorkplaceItemName,
+                ContractType = contract?.ContractType,
+                EmploymentDate = contract?.EmploymentDate,
+                TerminationDate = contract?.TerminationDate,
+                Salary = contract?.Salary, 
+                SalaryType = contract?.SalaryType,
+                FteDenominator = contract?.FteDenominator,
+                FteNumerator = contract?.FteNumerator,
+                ContractStartDate = contract?.StartDate,
+                BhpStatus = await _serviceManager.TrainingService.GetBhpStatus(employee.Id),
+            });
+        }
+        
+        return Ok(result);
     }
 
     [HttpGet("{id}", Name = "GetEmployeeById")]
