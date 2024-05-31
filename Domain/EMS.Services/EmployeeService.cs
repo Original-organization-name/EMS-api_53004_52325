@@ -74,4 +74,13 @@ public class EmployeeService : IEmployeeService
 
         return image.Name;
     }
+
+    public async Task<EmployeeModel?> Delete(Guid id)
+    {
+        var employee = await _employeeRepository.GetByIdAsync(id);
+        await _employeeRepository.DeleteAsync(employee);
+        await _employeeRepository.SaveChangesAsync();
+
+        return employee?.Adapt<EmployeeModel>();
+    }
 }

@@ -93,4 +93,12 @@ public class EmployeesController : ControllerBase
         
         return CreatedAtAction(nameof(GetEmployeeById), new { id = employee.Id }, employee);
     }
+    
+    
+    [HttpDelete("{id}", Name = "DeleteEmployee")]
+    public async Task<ActionResult<EmployeeModel?>> Delete(Guid id)
+    {
+        var employee = await _serviceManager.EmployeeService.Delete(id);
+        return Ok(employee);
+    }
 }

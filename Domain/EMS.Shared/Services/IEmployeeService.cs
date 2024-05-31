@@ -15,4 +15,6 @@ public interface IEmployeeService
     int Count(Expression<Func<Employee, bool>> expression);
 
     Task<string?> AddImage(Guid employeeId, string imageBase64);
+
+    Task<EmployeeModel?> Delete(Guid id);
 }

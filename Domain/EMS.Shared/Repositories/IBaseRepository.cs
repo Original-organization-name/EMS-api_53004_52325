@@ -16,7 +16,7 @@ public interface IBaseRepository<T> where T : Entity
     Task UpdateAsync(T entity);
     void Update(T entity);
 
-    Task DeleteAsync(T entity);
+    Task DeleteAsync(T? entity);
     void Delete(T entity);
 
     Task<bool> ExistsAsync(Guid id);
