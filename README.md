@@ -1,6 +1,6 @@
-#Employee Manager System (EMS) API
+# Employee Manager System (EMS) API
 
-###Project Overview
+### Project Overview
 Employee Manager System (EMS) API is a backend application built with ASP.NET Core and Entity Framework Core to manage employee information. The API provides endpoints to perform CRUD operations on employee data and serves as the backend for the EMS Angular frontend.
 
 This README file provides an overview of the project, setup instructions, and steps to run the application using Docker Compose.
