@@ -9,7 +9,7 @@ This README file provides an overview of the project, setup instructions, and st
 1.Ensure Docker and Docker Compose are installed and running on your machine.
 2. Clone the repository:
 ```
-> git clone https://github.com/Original-organization-name/EMS.git 
+> git clone https://github.com/Original-organization-name/EMS-api_53004_52325.git
 > cd EMS
 ```
 3. Running the Application
