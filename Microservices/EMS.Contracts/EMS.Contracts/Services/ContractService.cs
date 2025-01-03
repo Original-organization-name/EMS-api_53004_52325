@@ -3,15 +3,19 @@ using EMS.Contracts.Abstractions.Services;
 using EMS.Contracts.Domain.Entities;
 using EMS.Contracts.Models;
 using Mapster;
+using Microsoft.EntityFrameworkCore;
 
 namespace EMS.Contracts.Services;
 
 public class ContractService(IContractRepository repository)
     : IContractService
 {
-    public async Task<IReadOnlyList<ContractModel>> GetAllEmployeeContracts(Guid employeeId)
+    public async Task<IReadOnlyList<ContractModel>> GetAllEmployeeContractsAsync(Guid employeeId)
     {
-        return repository.GetAll(employeeId).Select(exam => exam.Adapt<ContractModel>()).ToList();
+        return await repository
+            .GetAll(employeeId)
+            .Select(exam => exam.Adapt<ContractModel>())
+            .ToListAsync();
     }
 
     public ContractModel? GetCurrentOrLatestContract(Guid employeeId)

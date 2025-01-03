@@ -12,7 +12,7 @@ public class ContractController(IContractService contractService)
     [HttpGet]
     public async Task<ActionResult<IEnumerable<ContractModel>>> GetContracts(Guid employeeId)
     {
-        var exams = await contractService.GetAllEmployeeContracts(employeeId);
+        var exams = await contractService.GetAllEmployeeContractsAsync(employeeId);
         return Ok(exams);
     }
 

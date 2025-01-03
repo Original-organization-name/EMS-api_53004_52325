@@ -1,38 +1,31 @@
-using EMS.DTO.Education;
-using EMS.Shared.Services;
+using EMS.Education.Abstractions.Services;
+using EMS.Education.Models;
 using Microsoft.AspNetCore.Mvc;
 
-namespace EMS.Presentation.Controllers;
+namespace EMS.Education.Controllers;
 
 [ApiController]
-[Route("api/employees/{employeeId}/education")]
-public class EducationController : ControllerBase
+[Route("api/education/{employeeId}")]
+public class EducationController(IEducationService serviceManager) : ControllerBase
 {
-    private readonly IEducationService _service;
-    
-    public EducationController(IServiceManager serviceManager)
-    {
-        _service = serviceManager.EducationService;
-    }
-    
     [HttpGet(Name = "GetEmployeeEducation")]
     public async Task<ActionResult<IEnumerable<EducationModel>>> GetEducation(Guid employeeId)
     {
-        var exams = await _service.GetAllEmployeeEducation(employeeId);
+        var exams = await serviceManager.GetAllEmployeeEducationAsync(employeeId);
         return Ok(exams);
     }
 
     [HttpGet("{id}", Name = "GetEducationById")]
     public async Task<ActionResult<EducationModel?>> GetEducationById(Guid employeeId, Guid id)
     {
-        var education = await _service.GetById(id);
+        var education = await serviceManager.GetById(id);
         return Ok(education);
     }
 
     [HttpPost(Name = "AddEducation")]
     public async Task<ActionResult<EducationModel>> Post(Guid employeeId, [FromBody] EducationDto value)
     {
-        var education = await _service.Add(employeeId, value);
+        var education = await serviceManager.Add(employeeId, value);
         return Ok(education);
     }
 }

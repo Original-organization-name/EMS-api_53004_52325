@@ -1,10 +1,9 @@
 ﻿using EMS.Contracts.Abstractions.Repositories;
 using EMS.Contracts.Domain.Entities;
-using EMS.Contracts.PersistenceLayer;
 using EMS.Domain.Repositories;
 using Microsoft.EntityFrameworkCore;
 
-namespace EMS.Contracts.Repositories;
+namespace EMS.Contracts.PersistenceLayer.Repositories;
 
 public class ContractRepository : BaseRepository<ContractsDbContext, Contract>, IContractRepository
 {

@@ -1,14 +1,14 @@
-﻿using EMS.Data.Models;
-using EMS.DTO.Education;
+﻿using EMS.Domain.Models;
+using EMS.Education.Models;
 using Mapster;
 
-namespace EMS.DTO.Mapster;
+namespace EMS.Education.Mapping;
 
 public class ExperienceRegister : IRegister
 {
     public void Register(TypeAdapterConfig config)
     {
-        config.NewConfig<(Guid employeeId, EducationDto dto), Data.Education.Education>()
+        config.NewConfig<(Guid employeeId, EducationDto dto), Domain.Education>()
             .Map(dest => dest.EmployeeId, src => src.employeeId)
             .Map(dest => dest.SchoolName, src => src.dto.SchoolName)
             .Map(dest => dest.Type, src => src.dto.Type)
@@ -16,7 +16,7 @@ public class ExperienceRegister : IRegister
             .Map(dest => dest.Degree, src => src.dto.Degree)
             .Map(dest => dest.Occupation, src => src.dto.Occupation);
         
-        config.NewConfig<Data.Education.Education, EducationModel>()
+        config.NewConfig<Domain.Education, EducationModel>()
             .Map(dest => dest.Id, src => src.Id)
             .Map(dest => dest.SchoolName, src => src.SchoolName)
             .Map(dest => dest.Type, src => src.Type)

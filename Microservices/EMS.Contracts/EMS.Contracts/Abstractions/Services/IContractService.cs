@@ -4,7 +4,7 @@ namespace EMS.Contracts.Abstractions.Services;
 
 public interface IContractService
 {
-    Task<IReadOnlyList<ContractModel>> GetAllEmployeeContracts(Guid employeeId);
+    Task<IReadOnlyList<ContractModel>> GetAllEmployeeContractsAsync(Guid employeeId);
     ContractModel? GetCurrentOrLatestContract(Guid employeeId);
     Task<ContractModel?> GetById(Guid id);
     Task<ContractModel> Add(Guid employeeId, ContractDto contract);

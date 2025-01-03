@@ -1,9 +1,8 @@
 ﻿using EMS.Contracts.Abstractions.Repositories;
 using EMS.Contracts.Domain.Entities;
-using EMS.Contracts.PersistenceLayer;
 using Microsoft.EntityFrameworkCore;
 
-namespace EMS.Contracts.Repositories;
+namespace EMS.Contracts.PersistenceLayer.Repositories;
 
 public class OccupationDictRepository(ContractsDbContext dbContext) 
     : IOccupationDictRepository
