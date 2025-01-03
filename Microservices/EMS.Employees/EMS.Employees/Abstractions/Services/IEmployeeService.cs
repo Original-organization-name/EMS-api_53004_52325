@@ -1,0 +1,20 @@
+﻿using System.Linq.Expressions;
+using EMS.Employees.Domain;
+using EMS.Employees.Models;
+
+namespace EMS.Employees.Abstractions.Services;
+
+public interface IEmployeeService
+{
+    Task<IReadOnlyList<EmployeeModel>> GetAllAsync();
+    Task<IEnumerable<EmployeeModel>> GetRecentAddedAsync();
+    Task<EmployeeModel?> GetById(Guid id);
+    Task<EmployeeModel> Add(EmployeeDto employee);
+    
+    int Count();
+    int Count(Expression<Func<Employee, bool>> expression);
+
+    Task<string?> AddImage(Guid employeeId, string imageBase64);
+
+    Task<EmployeeModel?> Delete(Guid id);
+}

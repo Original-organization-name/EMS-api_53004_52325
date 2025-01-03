@@ -1,0 +1,16 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EMS.Employees", "EMS.Employees\EMS.Employees.csproj", "{8214F571-1F1C-4810-8FD5-3C4C02E4592C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8214F571-1F1C-4810-8FD5-3C4C02E4592C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8214F571-1F1C-4810-8FD5-3C4C02E4592C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8214F571-1F1C-4810-8FD5-3C4C02E4592C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8214F571-1F1C-4810-8FD5-3C4C02E4592C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

@@ -1,14 +1,15 @@
 version: '3.9'
 
 services:
-  api:
+      
+  employees:
     build:
       context: ../
-      dockerfile: EMS.Api/Dockerfile
-    container_name: ems-api
+      dockerfile: Microservices/EMS.Employees/EMS.Employees/Dockerfile
+    container_name: ems-employees
     restart: unless-stopped
     ports:
-      - 5000:80
+      - 5010:8080
     networks:
       - ems
         
