@@ -11,6 +11,17 @@ services:
       - 5000:80
     networks:
       - ems
+        
+  constacts:
+    build:
+      context: ../
+      dockerfile: Microservices/EMS.Contracts/EMS.Contracts/Dockerfile
+    container_name: ems-contracts
+    restart: unless-stopped
+    ports:
+      - 5006:8080
+    networks:
+      - ems
 
   postgres:
     image: postgres:14-alpine
