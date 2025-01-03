@@ -1,6 +1,6 @@
 ﻿using EMS.Contracts.Abstractions.Repositories;
 using EMS.Contracts.Domain.Entities;
-using EMS.Domain.Repositories;
+using EMS.Shared.Repositories;
 using Microsoft.EntityFrameworkCore;
 
 namespace EMS.Contracts.PersistenceLayer.Repositories;

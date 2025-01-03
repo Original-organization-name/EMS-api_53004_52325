@@ -1,4 +1,4 @@
-using EMS.Domain.Controllers;
+using EMS.Shared.Controllers;
 using EMS.EmployeeRecords.Abstractions.Services;
 using EMS.EmployeeRecords.Domain.Dictionaries;
 using Microsoft.AspNetCore.Mvc;

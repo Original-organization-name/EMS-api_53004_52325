@@ -1,5 +1,5 @@
-﻿using EMS.Domain.Extensions;
-using EMS.Domain.Shared;
+﻿using EMS.Shared.Extensions;
+using EMS.Shared.Shared;
 using EMS.EmployeeRecords.Abstractions.Repositories;
 using EMS.EmployeeRecords.Abstractions.Services;
 using EMS.EmployeeRecords.Domain;

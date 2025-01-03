@@ -1,8 +1,8 @@
-﻿using EMS.Domain.Abstractions;
-using EMS.Domain.Enums;
-using EMS.Domain.Exceptions;
-using EMS.Domain.Helpers;
-using EMS.Domain.Models;
+﻿using EMS.Shared.Abstractions;
+using EMS.Shared.Enums;
+using EMS.Shared.Exceptions;
+using EMS.Shared.Helpers;
+using EMS.Shared.Models;
 using EMS.Employees.Domain.Entities;
 
 namespace EMS.Employees.Domain;

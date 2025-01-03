@@ -1,4 +1,4 @@
-﻿using EMS.Domain.Repositories;
+﻿using EMS.Shared.Repositories;
 using EMS.Employees.Abstractions.Repositories;
 using EMS.Employees.Domain.Entities;
 

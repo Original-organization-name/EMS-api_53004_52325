@@ -1,4 +1,4 @@
-﻿using EMS.Domain.Models;
+﻿using EMS.Shared.Models;
 using EMS.Education.Domain.Enums;
 
 namespace EMS.Education.Domain;

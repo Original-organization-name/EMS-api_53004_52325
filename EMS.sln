@@ -6,7 +6,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Microservices", "Microservi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EMS.Contracts", "Microservices\EMS.Contracts\EMS.Contracts\EMS.Contracts.csproj", "{39076223-3D0F-4585-BC51-55CBDE51210E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EMS.Domain", "Domain\EMS.Domain\EMS.Domain.csproj", "{2135E89E-5AA8-4785-BC06-D7CCCC891C1B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EMS.Shared", "Domain\EMS.Shared\EMS.Shared.csproj", "{2135E89E-5AA8-4785-BC06-D7CCCC891C1B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EMS.Education", "Microservices\EMS.Education\EMS.Education\EMS.Education.csproj", "{43613306-EBDE-497E-B457-4606B5A92748}"
 EndProject

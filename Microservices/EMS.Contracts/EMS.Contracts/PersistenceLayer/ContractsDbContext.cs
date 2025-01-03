@@ -1,6 +1,6 @@
 ﻿using EMS.Contracts.Domain.Dictionaries;
 using EMS.Contracts.Domain.Entities;
-using EMS.Domain.Interceptors;
+using EMS.Shared.Interceptors;
 using Microsoft.EntityFrameworkCore;
 
 namespace EMS.Contracts.PersistenceLayer;

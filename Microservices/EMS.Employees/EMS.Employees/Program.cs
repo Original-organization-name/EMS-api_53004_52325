@@ -1,5 +1,5 @@
-using EMS.Domain.Helpers;
-using EMS.Domain.Middlewares;
+using EMS.Shared.Helpers;
+using EMS.Shared.Middlewares;
 using EMS.Employees.Abstractions.Repositories;
 using EMS.Employees.Abstractions.Services;
 using EMS.Employees.PersistenceLayer;

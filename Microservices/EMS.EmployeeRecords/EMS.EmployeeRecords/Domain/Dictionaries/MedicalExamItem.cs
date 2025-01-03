@@ -1,5 +1,5 @@
-﻿using EMS.Domain.Abstractions;
-using EMS.Domain.Models;
+﻿using EMS.Shared.Abstractions;
+using EMS.Shared.Models;
 
 namespace EMS.EmployeeRecords.Domain.Dictionaries;
 

@@ -1,4 +1,4 @@
-﻿using EMS.Domain.Abstractions.Dictionaries;
+﻿using EMS.Shared.Abstractions.Dictionaries;
 using EMS.EmployeeRecords.Domain.Dictionaries;
 using Mapster;
 

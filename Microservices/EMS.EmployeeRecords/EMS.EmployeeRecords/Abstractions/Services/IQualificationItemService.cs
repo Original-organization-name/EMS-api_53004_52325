@@ -1,4 +1,4 @@
-﻿using EMS.Domain.Abstractions;
+﻿using EMS.Shared.Abstractions;
 using EMS.EmployeeRecords.Domain.Dictionaries;
 
 namespace EMS.EmployeeRecords.Abstractions.Services;

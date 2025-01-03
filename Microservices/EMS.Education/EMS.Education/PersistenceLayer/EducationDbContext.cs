@@ -1,4 +1,4 @@
-﻿using EMS.Domain.Interceptors;
+﻿using EMS.Shared.Interceptors;
 using Microsoft.EntityFrameworkCore;
 
 namespace EMS.Education.PersistenceLayer;

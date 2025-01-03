@@ -1,6 +1,6 @@
 using EMS.Contracts.Abstractions.Services;
 using EMS.Contracts.Domain.Dictionaries;
-using EMS.Domain.Controllers;
+using EMS.Shared.Controllers;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EMS.Contracts.Controllers;

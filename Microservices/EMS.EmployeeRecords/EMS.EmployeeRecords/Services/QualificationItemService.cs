@@ -1,4 +1,4 @@
-﻿using EMS.Domain.Services;
+﻿using EMS.Shared.Services;
 using EMS.EmployeeRecords.Abstractions.Repositories;
 using EMS.EmployeeRecords.Abstractions.Services;
 using EMS.EmployeeRecords.Domain.Dictionaries;

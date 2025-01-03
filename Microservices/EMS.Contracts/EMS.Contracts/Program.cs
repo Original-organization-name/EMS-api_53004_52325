@@ -3,8 +3,8 @@ using EMS.Contracts.Abstractions.Services;
 using EMS.Contracts.PersistenceLayer;
 using EMS.Contracts.PersistenceLayer.Repositories;
 using EMS.Contracts.Services;
-using EMS.Domain.Helpers;
-using EMS.Domain.Middlewares;
+using EMS.Shared.Helpers;
+using EMS.Shared.Middlewares;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);

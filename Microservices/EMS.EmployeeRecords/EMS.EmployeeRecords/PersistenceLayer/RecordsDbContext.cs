@@ -1,4 +1,4 @@
-﻿using EMS.Domain.Interceptors;
+﻿using EMS.Shared.Interceptors;
 using EMS.EmployeeRecords.Domain;
 using EMS.EmployeeRecords.Domain.Dictionaries;
 using Microsoft.EntityFrameworkCore;

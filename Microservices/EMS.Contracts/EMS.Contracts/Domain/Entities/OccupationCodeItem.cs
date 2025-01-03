@@ -1,4 +1,4 @@
-using EMS.Domain.Abstractions;
+using EMS.Shared.Abstractions;
 
 namespace EMS.Contracts.Domain.Entities;
 

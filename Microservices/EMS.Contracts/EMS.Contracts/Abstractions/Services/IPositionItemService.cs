@@ -1,5 +1,5 @@
 ﻿using EMS.Contracts.Domain.Dictionaries;
-using EMS.Domain.Abstractions;
+using EMS.Shared.Abstractions;
 
 namespace EMS.Contracts.Abstractions.Services;
 

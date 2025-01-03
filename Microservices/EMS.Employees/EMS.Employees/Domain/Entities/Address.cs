@@ -1,4 +1,4 @@
-﻿using EMS.Domain.Models;
+﻿using EMS.Shared.Models;
 
 namespace EMS.Employees.Domain.Entities;
 

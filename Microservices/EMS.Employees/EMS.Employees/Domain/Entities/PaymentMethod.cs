@@ -1,5 +1,5 @@
-﻿using EMS.Domain.Enums;
-using EMS.Domain.Models;
+﻿using EMS.Shared.Enums;
+using EMS.Shared.Models;
 
 namespace EMS.Employees.Domain.Entities;
 

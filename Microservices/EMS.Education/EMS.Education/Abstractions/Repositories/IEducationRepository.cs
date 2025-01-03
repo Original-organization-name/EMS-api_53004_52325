@@ -1,4 +1,4 @@
-﻿using EMS.Domain.Repositories;
+﻿using EMS.Shared.Repositories;
 
 namespace EMS.Education.Abstractions.Repositories;
 

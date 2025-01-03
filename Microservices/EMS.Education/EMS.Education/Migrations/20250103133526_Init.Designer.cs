@@ -60,7 +60,7 @@ namespace EMS.Education.Migrations
 
             modelBuilder.Entity("EMS.Education.Domain.Education", b =>
                 {
-                    b.OwnsOne("EMS.Domain.Models.TerminalDatePeriod", "Period", b1 =>
+                    b.OwnsOne("EMS.Shared.Models.TerminalDatePeriod", "Period", b1 =>
                         {
                             b1.Property<Guid>("EducationId")
                                 .HasColumnType("uuid");
