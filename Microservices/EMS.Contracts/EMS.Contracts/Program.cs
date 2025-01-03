@@ -40,13 +40,13 @@ app.MapControllers();
 
 app.UseCors("AllCors");
 
-app.Seed();
-
 using (var serviceScope = app.Services.CreateScope())
 {
     var dbContext = serviceScope.ServiceProvider.GetRequiredService<ContractsDbContext>();
     dbContext.Database.Migrate();
 }
+
+app.Seed();
 
 app.Run();
 

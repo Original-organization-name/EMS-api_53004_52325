@@ -6,7 +6,7 @@ public static class StringExtension
     {
         result = new List<int>();
         
-        foreach (var i in str)
+        foreach (var i in str ?? "")
         {
             if (!char.IsDigit(i))
                 return false;

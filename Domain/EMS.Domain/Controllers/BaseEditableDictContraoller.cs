@@ -19,7 +19,7 @@ public abstract class BaseEditableDictController<T> : ControllerBase
     [HttpGet]
     public async Task<ActionResult<IEnumerable<DictionaryItemModel>>> GetDictionary()
     {
-        var examinations = await _service.GetAll();
+        var examinations = await _service.GetAllAsync();
         return Ok(examinations);
     }
     

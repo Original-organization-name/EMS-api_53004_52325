@@ -1,0 +1,10 @@
+﻿using EMS.EmployeeRecords.Models;
+
+namespace EMS.EmployeeRecords.Abstractions.Services;
+
+public interface IMedicalExaminationService 
+{
+    Task<IReadOnlyList<MedicalExaminationModel>> GetAllAsync(Guid employeeId);
+    Task<MedicalExaminationModel?> GetById(Guid id);
+    Task<MedicalExaminationModel> Add(Guid employeeId, MedicalExaminationDto medicalExamination);
+}

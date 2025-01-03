@@ -3,6 +3,7 @@ using EMS.Domain.Abstractions.Dictionaries;
 using EMS.Domain.Models;
 using EMS.Domain.Repositories;
 using Mapster;
+using Microsoft.EntityFrameworkCore;
 
 namespace EMS.Domain.Services;
 
@@ -10,26 +11,28 @@ public class BaseEditableDictService<T>(IBaseEditableDictRepository<T> repositor
     : IBaseEditableDictService<T>
     where T : EditableDictionaryItem
 {
-    protected readonly IBaseEditableDictRepository<T> Repository = repository;
-
-    public async Task<IReadOnlyList<DictionaryItemModel>> GetAll()
+    public async Task<IReadOnlyList<DictionaryItemModel>> GetAllAsync()
     {
-        return Repository.GetAll().Select(item => new DictionaryItemModel(item.Id, item.Value)).ToList();
+        return await repository
+            .GetAll()
+            .Select(item => 
+                new DictionaryItemModel(item.Id, item.Value))
+            .ToListAsync();
     }
 
     public async Task<DictionaryItemModel> Add(DictionaryItemDto newItem)
     {
         var item = newItem.Adapt<T>();
         
-        await Repository.AddAsync(item);
-        await Repository.SaveChangesAsync();
+        await repository.AddAsync(item);
+        await repository.SaveChangesAsync();
 
         return new DictionaryItemModel(item.Id, item.Value);
     }
 
     public async Task<DictionaryItemModel?> Update(Guid id, DictionaryItemDto newItem)
     {
-        var training = await Repository.GetByIdAsync(id);
+        var training = await repository.GetByIdAsync(id);
         if (training is null)
         {
             return null;
@@ -37,22 +40,22 @@ public class BaseEditableDictService<T>(IBaseEditableDictRepository<T> repositor
 
         training.Value = newItem.Value;
         
-        await Repository.UpdateAsync(training);
-        await Repository.SaveChangesAsync();
+        await repository.UpdateAsync(training);
+        await repository.SaveChangesAsync();
 
         return new DictionaryItemModel(training.Id, training.Value);
     }
 
     public async Task<DictionaryItemModel?> Delete(Guid id)
     {
-        var training = await Repository.GetByIdAsync(id);
+        var training = await repository.GetByIdAsync(id);
         if (training is null)
         {
             return null;
         }
         
-        await Repository.DeleteAsync(training);
-        await Repository.SaveChangesAsync();
+        await repository.DeleteAsync(training);
+        await repository.SaveChangesAsync();
 
         return new DictionaryItemModel(training.Id, training.Value);
     }
