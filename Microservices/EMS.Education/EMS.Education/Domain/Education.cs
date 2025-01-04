@@ -1,5 +1,5 @@
-﻿using EMS.Shared.Models;
-using EMS.Education.Domain.Enums;
+﻿using EMS.Shared.Enums;
+using EMS.Shared.Models;
 
 namespace EMS.Education.Domain;
 

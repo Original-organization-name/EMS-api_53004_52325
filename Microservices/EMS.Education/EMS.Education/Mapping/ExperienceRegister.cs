@@ -1,5 +1,5 @@
-﻿using EMS.Shared.Models;
-using EMS.Education.Models;
+﻿using EMS.Dto.Education;
+using EMS.Shared.Models;
 using Mapster;
 
 namespace EMS.Education.Mapping;

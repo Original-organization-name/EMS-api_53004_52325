@@ -1,5 +1,5 @@
 ﻿using EMS.Contracts.Domain.Entities;
-using EMS.Contracts.Models;
+using EMS.Dto.Contracts;
 using Mapster;
 
 namespace EMS.Contracts.Mapping;

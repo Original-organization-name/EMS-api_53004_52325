@@ -1,7 +1,7 @@
-﻿using EMS.EmployeeRecords.Abstractions.Repositories;
+﻿using EMS.Dto.EmployeeRecords;
+using EMS.EmployeeRecords.Abstractions.Repositories;
 using EMS.EmployeeRecords.Abstractions.Services;
 using EMS.EmployeeRecords.Domain;
-using EMS.EmployeeRecords.Models;
 using Mapster;
 using Microsoft.EntityFrameworkCore;
 

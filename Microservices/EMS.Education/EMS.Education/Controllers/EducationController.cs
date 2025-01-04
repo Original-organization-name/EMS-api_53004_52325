@@ -1,5 +1,5 @@
+using EMS.Dto.Education;
 using EMS.Education.Abstractions.Services;
-using EMS.Education.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EMS.Education.Controllers;

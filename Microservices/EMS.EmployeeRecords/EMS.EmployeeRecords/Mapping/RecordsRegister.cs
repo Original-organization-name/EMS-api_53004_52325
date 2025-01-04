@@ -1,5 +1,5 @@
-﻿using EMS.EmployeeRecords.Domain;
-using EMS.EmployeeRecords.Models;
+﻿using EMS.Dto.EmployeeRecords;
+using EMS.EmployeeRecords.Domain;
 using Mapster;
 
 namespace EMS.EmployeeRecords.Mapping;

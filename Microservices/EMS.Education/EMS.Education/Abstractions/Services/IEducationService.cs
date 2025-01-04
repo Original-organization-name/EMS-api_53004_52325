@@ -1,4 +1,4 @@
-﻿using EMS.Education.Models;
+﻿using EMS.Dto.Education;
 
 namespace EMS.Education.Abstractions.Services;
 

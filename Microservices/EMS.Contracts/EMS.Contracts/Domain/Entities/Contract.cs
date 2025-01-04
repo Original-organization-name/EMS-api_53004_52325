@@ -1,5 +1,5 @@
 using EMS.Contracts.Domain.Dictionaries;
-using EMS.Contracts.Domain.Enums;
+using EMS.Shared.Enums;
 using EMS.Shared.Models;
 
 namespace EMS.Contracts.Domain.Entities;

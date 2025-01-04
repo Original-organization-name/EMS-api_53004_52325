@@ -5,13 +5,17 @@ using EMS.Education.Abstractions.Services;
 using EMS.Education.PersistenceLayer;
 using EMS.Education.PersistenceLayer.Repositories;
 using EMS.Education.Services;
+using EMS.EventBus.Extensions;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
+AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
+
 builder.Services
     .AddControllersWithOptions()
     .ScanMapperRegisters()
+    .AddEventBus()
     .AddSwagger()
     .AddAllCors();
 

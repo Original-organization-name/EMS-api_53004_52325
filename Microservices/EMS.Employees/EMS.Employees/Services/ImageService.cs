@@ -1,6 +1,6 @@
-﻿using EMS.Employees.Abstractions.Repositories;
+﻿using EMS.Dto.Employees;
+using EMS.Employees.Abstractions.Repositories;
 using EMS.Employees.Abstractions.Services;
-using EMS.Employees.Models;
 
 namespace EMS.Employees.Services;
 

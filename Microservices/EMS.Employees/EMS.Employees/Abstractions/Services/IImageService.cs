@@ -1,4 +1,4 @@
-﻿using EMS.Employees.Models;
+﻿using EMS.Dto.Employees;
 
 namespace EMS.Employees.Abstractions.Services;
 

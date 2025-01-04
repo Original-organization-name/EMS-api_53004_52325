@@ -1,5 +1,5 @@
 using EMS.Contracts.Abstractions.Services;
-using EMS.Contracts.Models;
+using EMS.Dto.Contracts;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EMS.Contracts.Controllers;

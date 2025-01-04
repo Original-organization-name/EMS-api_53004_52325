@@ -23,6 +23,8 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\..\..\Domain\EMS.Dto\EMS.Dto.csproj" />
+      <ProjectReference Include="..\..\..\Domain\EMS.EventBus\EMS.EventBus.csproj" />
       <ProjectReference Include="..\..\..\Domain\EMS.Shared\EMS.Shared.csproj" />
     </ItemGroup>
 

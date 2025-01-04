@@ -1,7 +1,7 @@
 ﻿using EMS.Contracts.Abstractions.Repositories;
 using EMS.Contracts.Abstractions.Services;
 using EMS.Contracts.Domain.Entities;
-using EMS.Contracts.Models;
+using EMS.Dto.Contracts;
 using Mapster;
 using Microsoft.EntityFrameworkCore;
 
@@ -54,30 +54,30 @@ public class ContractService(IContractRepository repository)
         return contract.Adapt<ContractModel>();
     }
 
-    public decimal CountTotalPayroll()
+    public async Task<decimal> CountTotalPayrollAsync()
     {
-        var currentContract = repository
+        var currentContract = await repository
             .FindByCondition(x => 
                 (x.TerminationDate == null || x.TerminationDate >= DateTime.Today) &&
                 x.StartDate <= DateTime.Today)
-            .ToList();
+            .ToListAsync();
 
         return currentContract.Sum(x => x.CalcMonthSalary());
     }
 
-    public int GetActiveContractsCount()
+    public async Task<int> GetActiveContractsCountAsync()
     {
-        return repository
+        return await repository
             .FindByCondition(x => x.TerminationDate == null || x.TerminationDate >= DateTime.Today)
-            .Count();
+            .CountAsync();
     }
 
-    public int GetExpiresContractsCount()
+    public async Task<int> GetExpiresContractsCountAsync()
     {
-        return repository
+        return await repository
             .FindByCondition(x => x.TerminationDate != null && 
                                   x.TerminationDate >= DateTime.Today &&
                                   ((DateTime)x.TerminationDate).AddDays(-14) <= DateTime.Today)
-            .Count();
+            .CountAsync();
     }
 }

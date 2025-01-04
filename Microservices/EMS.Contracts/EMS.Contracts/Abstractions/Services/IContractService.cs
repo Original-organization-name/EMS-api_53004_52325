@@ -1,4 +1,4 @@
-﻿using EMS.Contracts.Models;
+﻿using EMS.Dto.Contracts;
 
 namespace EMS.Contracts.Abstractions.Services;
 
@@ -9,7 +9,7 @@ public interface IContractService
     Task<ContractModel?> GetById(Guid id);
     Task<ContractModel> Add(Guid employeeId, ContractDto contract);
     
-    decimal CountTotalPayroll();
-    int GetActiveContractsCount();
-    int GetExpiresContractsCount();
+    Task<decimal> CountTotalPayrollAsync();
+    Task<int> GetActiveContractsCountAsync();
+    Task<int> GetExpiresContractsCountAsync();
 }

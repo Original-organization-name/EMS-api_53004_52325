@@ -1,6 +1,6 @@
-﻿using EMS.Employees.Domain;
+﻿using EMS.Dto.Employees;
+using EMS.Employees.Domain;
 using EMS.Employees.Domain.Entities;
-using EMS.Employees.Models;
 using Mapster;
 
 namespace EMS.Employees.Mapping;

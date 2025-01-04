@@ -1,6 +1,6 @@
 ﻿using System.Linq.Expressions;
+using EMS.Dto.Employees;
 using EMS.Employees.Domain;
-using EMS.Employees.Models;
 
 namespace EMS.Employees.Abstractions.Services;
 

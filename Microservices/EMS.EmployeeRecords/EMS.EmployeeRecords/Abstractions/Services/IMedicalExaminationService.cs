@@ -1,4 +1,4 @@
-﻿using EMS.EmployeeRecords.Models;
+﻿using EMS.Dto.EmployeeRecords;
 
 namespace EMS.EmployeeRecords.Abstractions.Services;
 

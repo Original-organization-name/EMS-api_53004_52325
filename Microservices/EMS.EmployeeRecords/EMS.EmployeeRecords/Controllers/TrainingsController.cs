@@ -1,5 +1,5 @@
+using EMS.Dto.EmployeeRecords;
 using EMS.EmployeeRecords.Abstractions.Services;
-using EMS.EmployeeRecords.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EMS.EmployeeRecords.Controllers;

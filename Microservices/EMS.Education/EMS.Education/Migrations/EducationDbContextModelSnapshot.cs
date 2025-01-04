@@ -29,7 +29,7 @@ namespace EMS.Education.Migrations
                         .HasColumnType("uuid");
 
                     b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("timestamp without time zone");
 
                     b.Property<string>("Degree")
                         .HasColumnType("text");
@@ -48,7 +48,7 @@ namespace EMS.Education.Migrations
                         .HasColumnType("integer");
 
                     b.Property<DateTime?>("UpdatedAt")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("timestamp without time zone");
 
                     b.HasKey("Id");
 
@@ -63,10 +63,10 @@ namespace EMS.Education.Migrations
                                 .HasColumnType("uuid");
 
                             b1.Property<DateTime>("End")
-                                .HasColumnType("timestamp with time zone");
+                                .HasColumnType("timestamp without time zone");
 
                             b1.Property<DateTime>("Start")
-                                .HasColumnType("timestamp with time zone");
+                                .HasColumnType("timestamp without time zone");
 
                             b1.HasKey("EducationId");
 

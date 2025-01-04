@@ -1,9 +1,9 @@
-﻿using EMS.Shared.Extensions;
+﻿using EMS.Dto.EmployeeRecords;
+using EMS.Shared.Extensions;
 using EMS.Shared.Shared;
 using EMS.EmployeeRecords.Abstractions.Repositories;
 using EMS.EmployeeRecords.Abstractions.Services;
 using EMS.EmployeeRecords.Domain;
-using EMS.EmployeeRecords.Models;
 using Mapster;
 using Microsoft.EntityFrameworkCore;
 
@@ -40,7 +40,7 @@ public class TrainingService(ITrainingRepository repositoryManager) : ITrainingS
         return training.Adapt<TrainingModel>();
     }
 
-    public async Task<Status?> GetBhpStatusAsync(Guid employeeId)
+    public async Task<RecordStatus?> GetBhpStatusAsync(Guid employeeId)
     {
         return (await repositoryManager.GetAll(employeeId)
             .OrderByDescending(x => x.ExpirationDate ?? DateTime.MaxValue)
