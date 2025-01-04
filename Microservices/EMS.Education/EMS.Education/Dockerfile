@@ -4,15 +4,19 @@ EXPOSE 8080
 EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
+
+ARG PROJECT_CATALOG=Microservices/EMS.Education/EMS.Education
+ARG PROJECT_NAME=EMS.Education
+
 WORKDIR /src
-COPY ["EMS.Education/EMS.Education.csproj", "EMS.Education/"]
-RUN dotnet restore "EMS.Education/EMS.Education.csproj"
+COPY ["${PROJECT_CATALOG}/${PROJECT_NAME}.csproj", "${PROJECT_CATALOG}/"]
+RUN dotnet restore "${PROJECT_CATALOG}/${PROJECT_NAME}.csproj"
 COPY . .
-WORKDIR "/src/EMS.Education"
-RUN dotnet build "EMS.Education.csproj" -c Release -o /app/build
+WORKDIR "/src/${PROJECT_CATALOG}/"
+RUN dotnet build "${PROJECT_NAME}.csproj" -c Release -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "EMS.Education.csproj" -c Release -o /app/publish /p:UseAppHost=false
+RUN dotnet publish "${PROJECT_NAME}.csproj" -c Release -o /app/publish /p:UseAppHost=false
 
 FROM base AS final
 WORKDIR /app
