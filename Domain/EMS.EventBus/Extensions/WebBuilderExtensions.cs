@@ -19,6 +19,7 @@ public static class WebBuilderExtensions
         }
         
         services.AddHostedService<RabbitMqConsumerService>();
+        services.AddScoped<IEventBus, EventBusPublisher>();
         return services;
     }
 }

@@ -4,6 +4,8 @@ using System.Text.Json;
 using EMS.EventBus.Abstractions;
 using EMS.EventBus.Config;
 using EMS.EventBus.Helpers;
+using EMS.EventBus.Models;
+using EMS.Shared.Exceptions;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using RabbitMQ.Client;
@@ -119,9 +121,23 @@ public class RabbitMqConsumerService(IServiceProvider serviceProvider)
 
         if (handler != null)
         {
-            var result = await CallHandler(handlerType, handler, @event);
-            var json = JsonSerializer.Serialize(result);
+            BaseRequestResult result;
+            try
+            {
+                var resultData = await CallHandler(handlerType, handler, @event);
+                result = new BaseRequestResult(resultData);
+            }
+            catch (BadRequestException e)
+            {
+                result = new BaseRequestResult(BusStatusCode.BadRequest, e);
 
+            }
+            catch (Exception e)
+            {
+                result = new BaseRequestResult(BusStatusCode.InternalServerError, e);
+            }
+            
+            var serializedResult = JsonSerializer.Serialize(result);
             await _channel.BasicPublishAsync(
                 exchange: string.Empty,
                 routingKey: eventArgs.BasicProperties.ReplyTo ??
@@ -131,7 +147,7 @@ public class RabbitMqConsumerService(IServiceProvider serviceProvider)
                 {
                     CorrelationId = eventArgs.BasicProperties.CorrelationId
                 },
-                body: Encoding.UTF8.GetBytes(json));
+                body: Encoding.UTF8.GetBytes(serializedResult));
         }
         else
         {
