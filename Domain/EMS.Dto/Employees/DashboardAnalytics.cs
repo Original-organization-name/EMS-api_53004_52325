@@ -1,4 +1,4 @@
-﻿namespace EMS.Employees.Models;
+﻿namespace EMS.Dto.Employees;
 
 public record DashboardAnalytics(
     int TotalEmployeeCount = 0,

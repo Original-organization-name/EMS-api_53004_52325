@@ -1,6 +1,6 @@
-using EMS.Contracts.Domain.Enums;
+using EMS.Shared.Enums;
 
-namespace EMS.Contracts.Models;
+namespace EMS.Dto.Contracts;
 
 public record ContractModel(
     Guid Id,

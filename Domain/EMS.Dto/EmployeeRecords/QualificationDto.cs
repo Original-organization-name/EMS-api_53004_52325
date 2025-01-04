@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace EMS.EmployeeRecords.Models;
+namespace EMS.Dto.EmployeeRecords;
 
 [DisplayName("Qualification")]
 public record QualificationDto(

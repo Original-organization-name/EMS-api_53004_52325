@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace EMS.Employees.Models;
+namespace EMS.Dto.Employees;
 
 [DisplayName("Address")]
 public record AddressDto(

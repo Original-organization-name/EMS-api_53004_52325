@@ -1,6 +1,6 @@
-﻿using EMS.Education.Domain.Enums;
+﻿using EMS.Shared.Enums;
 
-namespace EMS.Education.Models;
+namespace EMS.Dto.Education;
 
 public record EducationModel(
     Guid Id,

@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel;
-using EMS.Education.Domain.Enums;
+using EMS.Shared.Enums;
 
-namespace EMS.Education.Models;
+namespace EMS.Dto.Education;
 
 [DisplayName("Education")]
 public record EducationDto(

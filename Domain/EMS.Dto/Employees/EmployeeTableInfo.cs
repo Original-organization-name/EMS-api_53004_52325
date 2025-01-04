@@ -1,12 +1,12 @@
 ﻿using EMS.Shared.Shared;
 
-namespace EMS.Employees.Models;
+namespace EMS.Dto.Employees;
 
 public class EmployeeTableInfo : EmployeeShortInfoModel
 {
     public string? Position { get; set; }
     public string? Workplace { get; set; }
     public DateTime? ContractStartDate { get; init; }
-    public Status? BhpStatus { get; init; }
-    public Status? MedicalExamStatus { get; init; }
+    public RecordStatus? BhpStatus { get; init; }
+    public RecordStatus? MedicalExamStatus { get; init; }
 }

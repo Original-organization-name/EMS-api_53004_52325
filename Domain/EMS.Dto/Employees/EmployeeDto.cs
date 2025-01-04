@@ -1,9 +1,10 @@
-﻿using EMS.Shared.Enums;
+﻿using System.ComponentModel;
+using EMS.Shared.Enums;
 
-namespace EMS.Employees.Models;
+namespace EMS.Dto.Employees;
 
-public record EmployeeModel(
-    Guid Id,
+[DisplayName("Employee")]
+public record EmployeeDto(
     string Name,
     string Surname,
     string? Pesel,
@@ -13,5 +14,5 @@ public record EmployeeModel(
     AddressDto? Address,
     string? PhoneNumber,
     string? Email,
-    PaymentMethodDto? PaymentMethod,
-    string? ImageFileName);
+    PaymentMethodDto? PaymentMethod);
+    

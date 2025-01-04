@@ -1,4 +1,4 @@
-﻿namespace EMS.EmployeeRecords.Models;
+﻿namespace EMS.Dto.EmployeeRecords;
 
 public record QualificationModel(
     Guid Id,

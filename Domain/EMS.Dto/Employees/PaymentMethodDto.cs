@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel;
 using EMS.Shared.Enums;
 
-namespace EMS.Employees.Models;
+namespace EMS.Dto.Employees;
 
 [DisplayName("PaymentMethod")]
 public record PaymentMethodDto(
