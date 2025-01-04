@@ -1,6 +1,6 @@
 ﻿namespace EMS.Shared.Shared;
 
-public enum Status
+public enum RecordStatus
 {
     Actual,
     Ending,

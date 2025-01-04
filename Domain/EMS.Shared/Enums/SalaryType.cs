@@ -1,4 +1,4 @@
-namespace EMS.Contracts.Domain.Enums;
+namespace EMS.Shared.Enums;
 
 public enum SalaryType
 {

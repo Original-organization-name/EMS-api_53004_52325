@@ -1,4 +1,4 @@
-﻿namespace EMS.Education.Domain.Enums;
+﻿namespace EMS.Shared.Enums;
 
 public enum SchoolType
 {

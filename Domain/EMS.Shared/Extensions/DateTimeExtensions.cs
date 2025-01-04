@@ -4,22 +4,22 @@ namespace EMS.Shared.Extensions;
 
 public static class DateTimeExtensions
 {
-    public static Status GetStatus(this DateTime value)
+    public static RecordStatus GetStatus(this DateTime value)
     {
         if(DateTime.Now > value)
         {
-            return Status.Ended;
+            return RecordStatus.Ended;
         }
 
         if(DateTime.Now.AddDays(14) >= value){
-            return Status.Ending;
+            return RecordStatus.Ending;
         }
 
-        return Status.Ended;
+        return RecordStatus.Ended;
     }
     
-    public static Status GetStatus(this DateTime? value)
+    public static RecordStatus GetStatus(this DateTime? value)
     {
-        return value?.GetStatus() ?? Status.Ended;
+        return value?.GetStatus() ?? RecordStatus.Ended;
     }
 }
