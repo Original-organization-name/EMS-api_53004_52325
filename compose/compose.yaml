@@ -1,11 +1,11 @@
 version: '3.9'
 
 services:
-  gateway:
+  api:
     build:
       context: ../
       dockerfile: Microservices/EMS.Gateway/EMS.Gateway/Dockerfile
-    container_name: ems-gateway
+    container_name: ems-api
     restart: unless-stopped
     ports:
       - 5000:8080
