@@ -23,7 +23,7 @@ public class EducationService(IEducationRepository repository)
         return education.Adapt<EducationModel>();
     }
 
-    public async Task<EducationModel> Add(Guid employeeId, EducationDto educationDto)
+    public async Task<EducationModel> AddAsync(Guid employeeId, EducationDto educationDto)
     {
         var education = (employeeId, educationDto).Adapt<Domain.Education>();
         education = await repository.AddAsync(education);

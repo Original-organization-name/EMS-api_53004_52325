@@ -18,32 +18,32 @@ public class ContractService(IContractRepository repository)
             .ToListAsync();
     }
 
-    public ContractModel? GetCurrentOrLatestContract(Guid employeeId)
+    public async Task<ContractModel?> GetCurrentOrLatestContractAsync(Guid employeeId)
     {
-        var result = repository
+        var result = await repository
             .GetAll(employeeId)
             .Where(x => x.TerminationDate == null || x.TerminationDate >= DateTime.Today)
             .OrderBy(x => x.StartDate)
-            .FirstOrDefault();
+            .FirstOrDefaultAsync();
         
         if(result is null){
-            result = repository
+            result = await repository
                 .GetAll(employeeId)
                 .Where(x => x.TerminationDate != null || x.TerminationDate < DateTime.Today)
                 .OrderByDescending(x => x.TerminationDate)
-                .FirstOrDefault();
+                .FirstOrDefaultAsync();
         }
 
         return result?.Adapt<ContractModel>();
     }
 
-    public async Task<ContractModel?> GetById(Guid id)
+    public async Task<ContractModel?> GetByIdAsync(Guid id)
     {
         var contract = await repository.GetByIdAsync(id);
         return contract.Adapt<ContractModel>();
     }
 
-    public async Task<ContractModel> Add(Guid employeeId, ContractDto contractDto)
+    public async Task<ContractModel> AddAsync(Guid employeeId, ContractDto contractDto)
     {
         var contract =  contractDto.Adapt<Contract>();
         contract.EmployeeId = employeeId;
@@ -79,5 +79,14 @@ public class ContractService(IContractRepository repository)
                                   x.TerminationDate >= DateTime.Today &&
                                   ((DateTime)x.TerminationDate).AddDays(-14) <= DateTime.Today)
             .CountAsync();
+    }
+
+    public async Task<IEnumerable<ContractModel>> DeleteEmployeeContractsAsync(Guid employeeId)
+    {
+        var contracts = await repository.DeleteByEmployeeIdAsync(employeeId);
+        await repository.SaveChangesAsync();
+        return contracts
+            .Select(exam => exam.Adapt<ContractModel>())
+            .ToList();
     }
 }

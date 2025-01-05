@@ -1,6 +1,5 @@
 using EMS.Dto.EmployeeRecords;
 using EMS.EventBus.Abstractions;
-using EMS.EventBus.EventBusRequests.EmployeeRecords;
 using EMS.EventBus.EventBusRequests.EmployeeRecords.Trainings;
 using Microsoft.AspNetCore.Mvc;
 

@@ -23,4 +23,13 @@ public class ContractRepository : BaseRepository<ContractsDbContext, Contract>, 
     {
         return FindByCondition(x => x.EmployeeId == employeeId);
     }
+
+    public async Task<IEnumerable<Contract>> DeleteByEmployeeIdAsync(Guid employeeId)
+    {        
+        var contracts = await FindByConditionWithTracking(item => item.EmployeeId == employeeId)
+            .ToListAsync();
+        
+        RepositoryContext.RemoveRange(contracts);
+        return contracts;
+    }
 }

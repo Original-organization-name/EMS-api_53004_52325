@@ -1,8 +1,8 @@
-﻿using EMS.Contracts.Domain.Entities;
+﻿using EMS.Dto.Contracts;
 
 namespace EMS.Contracts.Abstractions.Services;
 
 public interface IOccupationDictService
 {
-    Task<IReadOnlyList<OccupationCodeItem>> GetAll();
+    Task<IReadOnlyList<OccupationCodeItemModel>> GetAll();
 }

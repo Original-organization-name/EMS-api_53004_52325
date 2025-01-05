@@ -3,7 +3,7 @@ using EMS.Dto.Employees;
 using EMS.Employees.Abstractions.Services;
 using EMS.EventBus.Abstractions;
 using EMS.EventBus.EventBusRequests.Contracts;
-using EMS.EventBus.EventBusRequests.EmployeeRecords;
+using EMS.EventBus.EventBusRequests.EmployeeRecords.Trainings;
 using EMS.EventBus.EventBusRequests.Employees;
 using EMS.Shared.Shared;
 

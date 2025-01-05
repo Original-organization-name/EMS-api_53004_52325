@@ -5,7 +5,6 @@ using EMS.Contracts.PersistenceLayer.Repositories;
 using EMS.Contracts.Services;
 using EMS.EventBus.Extensions;
 using EMS.Shared.Helpers;
-using EMS.Shared.Middlewares;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -13,11 +12,8 @@ var builder = WebApplication.CreateBuilder(args);
 AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
 
 builder.Services
-    .AddControllersWithOptions()
     .ScanMapperRegisters()
-    .AddEventBus()
-    .AddSwagger()
-    .AddAllCors();
+    .AddEventBus();
 
 builder.Services.AddDbContext<ContractsDbContext>(ServiceLifetime.Scoped);
 
@@ -32,17 +28,6 @@ builder.Services.AddScoped<IPositionItemRepository, PositionItemRepository>();
 builder.Services.AddScoped<IContractRepository, ContractRepository>();
 
 var app = builder.Build();
-
-app.UseSwagger();
-app.UseSwaggerUI();
-
-app.UseMiddleware<ExceptionHandlingMiddleware>();
-app.UseHttpsRedirection();
-app.UseAuthorization();
-
-app.MapControllers();
-
-app.UseCors("AllCors");
 
 using (var serviceScope = app.Services.CreateScope())
 {

@@ -10,10 +10,9 @@ namespace EMS.Gateway.Controllers.Employees;
 public class DashboardController(IEventBus bus) : ControllerBase
 {
     [HttpGet]
-    public async Task<ActionResult<DashboardAnalytics>> GetDashboardAnalytic()
+    public async Task<DashboardAnalytics> GetDashboardAnalytic()
     {
         var request = new GetDashboardAnalyticRequest();
-        var result = await bus.RequestAsync<DashboardAnalytics>(request);
-        return Ok(result);
+        return (await bus.RequestAsync<DashboardAnalytics>(request))!;
     }
 }   

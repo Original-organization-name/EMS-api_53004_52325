@@ -1,6 +1,6 @@
 ﻿using EMS.EmployeeRecords.Abstractions.Services;
 using EMS.EventBus.Abstractions;
-using EMS.EventBus.EventBusRequests.EmployeeRecords;
+using EMS.EventBus.EventBusRequests.EmployeeRecords.Trainings;
 using EMS.Shared.Shared;
 
 namespace EMS.EmployeeRecords.EventBus.Trainings;
