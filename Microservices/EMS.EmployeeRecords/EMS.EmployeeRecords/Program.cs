@@ -1,5 +1,4 @@
 using EMS.Shared.Helpers;
-using EMS.Shared.Middlewares;
 using EMS.EmployeeRecords.Abstractions.Repositories;
 using EMS.EmployeeRecords.Abstractions.Services;
 using EMS.EmployeeRecords.PersistenceLayer;
