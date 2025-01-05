@@ -52,7 +52,7 @@ public static class AppBuilderExtension
     {
        services.AddCors(options =>
        {
-           options.AddPolicy("AllCors",
+           options.AddPolicy("AllowSpecificOrigin",
                cors =>
                {
                    cors.AllowAnyOrigin() 

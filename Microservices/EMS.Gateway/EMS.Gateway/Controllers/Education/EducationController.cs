@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace EMS.Gateway.Controllers.Education;
 
 [ApiController]
-[Route("api/employee/{employeeId}/education")]
+[Route("api/employees/{employeeId}/education")]
 public class EducationController(IEventBus bus) : ControllerBase
 {
     [HttpGet(Name = "GetEmployeeEducation")]
