@@ -22,7 +22,6 @@ public static class AppBuilderExtension
             });
         
         services.AddTransient<ExceptionHandlingMiddleware>();
-
         return services;
     }
     

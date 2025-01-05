@@ -9,16 +9,16 @@ public abstract class BaseRepository<TContext, TEntity>(TContext dbContext)
     where TEntity : Entity
     where TContext : DbContext
 {
-    private readonly DbSet<TEntity> _repositoryContext = dbContext.Set<TEntity>();
+    protected readonly DbSet<TEntity> RepositoryContext = dbContext.Set<TEntity>();
 
     public virtual IQueryable<TEntity> GetAll()
     {
-        return _repositoryContext.AsNoTracking();
+        return RepositoryContext.AsNoTracking();
     }
     
     public virtual IQueryable<TEntity> FindByConditionWithTracking(Expression<Func<TEntity, bool>> expression)
     {
-        return _repositoryContext.Where(expression);
+        return RepositoryContext.Where(expression);
     }
 
     public async Task<TEntity?> GetByIdAsync(Guid id)
@@ -36,7 +36,7 @@ public abstract class BaseRepository<TContext, TEntity>(TContext dbContext)
         if (entity is null) return default;
         if (await ExistsAsync(entity.Id)) return entity;
 
-        var entityEntry = await _repositoryContext.AddAsync(entity);
+        var entityEntry = await RepositoryContext.AddAsync(entity);
         return entityEntry.Entity;
     }
     
@@ -45,7 +45,7 @@ public abstract class BaseRepository<TContext, TEntity>(TContext dbContext)
         if (entity is null) return default;
         if (Exists(entity.Id)) return entity;
 
-        var entityEntry = _repositoryContext.Add(entity);
+        var entityEntry = RepositoryContext.Add(entity);
         return entityEntry.Entity;
     }
 
@@ -54,7 +54,7 @@ public abstract class BaseRepository<TContext, TEntity>(TContext dbContext)
         if (entity is null) return;
         if (!await ExistsAsync(entity.Id)) return;
 
-        _repositoryContext.Update(entity);
+        RepositoryContext.Update(entity);
     }
     
     public void Update(TEntity? entity)
@@ -62,7 +62,7 @@ public abstract class BaseRepository<TContext, TEntity>(TContext dbContext)
         if (entity is null) return;
         if (!Exists(entity.Id)) return;
 
-        _repositoryContext.Update(entity);
+        RepositoryContext.Update(entity);
     }
 
     public async Task DeleteAsync(TEntity? entity)
@@ -70,7 +70,7 @@ public abstract class BaseRepository<TContext, TEntity>(TContext dbContext)
         if (entity is null) return;
         if (!await ExistsAsync(entity.Id)) return;
 
-        _repositoryContext.Remove(entity);
+        RepositoryContext.Remove(entity);
     }
     
     public void Delete(TEntity? entity)
@@ -78,16 +78,16 @@ public abstract class BaseRepository<TContext, TEntity>(TContext dbContext)
         if (entity is null) return;
         if (!Exists(entity.Id)) return;
 
-        _repositoryContext.Remove(entity);
+        RepositoryContext.Remove(entity);
     }
 
     public Task<bool> ExistsAsync(Guid id) =>
-        _repositoryContext.AnyAsync(x => Equals(x.Id, id));
+        RepositoryContext.AnyAsync(x => Equals(x.Id, id));
 
     public Task<bool> ExistsAsync(Expression<Func<TEntity, bool>> expression) =>
-        _repositoryContext.AnyAsync(expression);
+        RepositoryContext.AnyAsync(expression);
 
-    public bool Exists(Guid id) => _repositoryContext.Any(x => Equals(x.Id, id));
+    public bool Exists(Guid id) => RepositoryContext.Any(x => Equals(x.Id, id));
     
     public async Task<int> SaveChangesAsync() => await dbContext.SaveChangesAsync();
 

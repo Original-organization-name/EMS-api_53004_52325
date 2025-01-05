@@ -1,6 +1,20 @@
 version: '3.9'
 
 services:
+  gateway:
+    build:
+      context: ../
+      dockerfile: Microservices/EMS.Gateway/EMS.Gateway/Dockerfile
+    container_name: ems-gateway
+    restart: unless-stopped
+    ports:
+      - 5010:8080
+    networks:
+      - ems
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
+        
   employees:
     build:
       context: ../
@@ -8,7 +22,7 @@ services:
     container_name: ems-employees
     restart: unless-stopped
     ports:
-      - 5010:8080
+      - 5011:8080
     networks:
       - ems
     depends_on:
@@ -22,7 +36,7 @@ services:
     container_name: ems-education
     restart: unless-stopped
     ports:
-      - 5011:8080
+      - 5012:8080
     networks:
       - ems
     depends_on:
@@ -36,7 +50,7 @@ services:
     container_name: ems-contracts
     restart: unless-stopped
     ports:
-      - 5012:8080
+      - 5013:8080
     networks:
       - ems
     depends_on:
@@ -50,7 +64,7 @@ services:
     container_name: ems-employee-records
     restart: unless-stopped
     ports:
-      - 5013:8080
+      - 5014:8080
     networks:
       - ems
     depends_on:

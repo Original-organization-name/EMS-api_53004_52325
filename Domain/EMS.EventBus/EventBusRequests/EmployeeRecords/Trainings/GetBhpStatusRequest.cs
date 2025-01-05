@@ -10,4 +10,9 @@ public class GetBhpStatusRequest : IEventBusRequest
     {
         EmployeeId = employeeId;
     }
+
+    public GetBhpStatusRequest()
+    {
+        
+    }
 }
