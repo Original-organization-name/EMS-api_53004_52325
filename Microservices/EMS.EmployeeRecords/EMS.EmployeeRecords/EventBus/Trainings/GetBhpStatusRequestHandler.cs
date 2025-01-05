@@ -3,7 +3,7 @@ using EMS.EventBus.Abstractions;
 using EMS.EventBus.EventBusRequests.EmployeeRecords;
 using EMS.Shared.Shared;
 
-namespace EMS.EmployeeRecords.EventBus;
+namespace EMS.EmployeeRecords.EventBus.Trainings;
 
 public class GetBhpStatusRequestHandler(ITrainingService service)
     : IEventBusRequestHandler<GetBhpStatusRequest, RecordStatus?>

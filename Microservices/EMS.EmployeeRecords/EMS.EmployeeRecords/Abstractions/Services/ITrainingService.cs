@@ -7,6 +7,7 @@ public interface ITrainingService
 {
     Task<IReadOnlyList<TrainingModel>> GetAllAsync(Guid employeeId);
     Task<TrainingModel?> GetById(Guid id);
-    Task<TrainingModel> Add(Guid employeeId, TrainingDto training);
+    Task<TrainingModel> AddAsync(Guid employeeId, TrainingDto training);
     Task<RecordStatus?> GetBhpStatusAsync(Guid employeeId);
+    Task<IEnumerable<TrainingModel>> DeleteEmployeeTrainingsAsync(Guid employeeId);
 }

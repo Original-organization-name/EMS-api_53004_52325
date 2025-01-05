@@ -21,4 +21,13 @@ public class MedicalExaminationRepository : BaseRepository<RecordsDbContext, Med
     {
         return GetAll().Where(item => item.EmployeeId == employeeId);
     }
+
+    public async Task<IEnumerable<MedicalExamination>> DeleteByEmployeeIdAsync(Guid employeeId)
+    {
+        var exams = await FindByConditionWithTracking(item => item.EmployeeId == employeeId)
+            .ToListAsync();
+        
+        RepositoryContext.RemoveRange(exams);
+        return exams;
+    }
 }

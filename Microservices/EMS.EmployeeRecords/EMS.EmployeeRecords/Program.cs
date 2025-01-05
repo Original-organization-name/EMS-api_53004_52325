@@ -13,11 +13,8 @@ var builder = WebApplication.CreateBuilder(args);
 AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
 
 builder.Services
-    .AddControllersWithOptions()
     .ScanMapperRegisters()
-    .AddEventBus()
-    .AddSwagger()
-    .AddAllCors();
+    .AddEventBus();
 
 builder.Services.AddDbContext<RecordsDbContext>(ServiceLifetime.Scoped);
 
@@ -36,17 +33,6 @@ builder.Services.AddScoped<ITrainingItemRepository, TrainingItemRepository>();
 builder.Services.AddScoped<ITrainingRepository, TrainingRepository>();
 
 var app = builder.Build();
-
-app.UseSwagger();
-app.UseSwaggerUI();
-
-app.UseMiddleware<ExceptionHandlingMiddleware>();
-app.UseHttpsRedirection();
-app.UseAuthorization();
-
-app.MapControllers();
-
-app.UseCors("AllCors");
 
 using (var serviceScope = app.Services.CreateScope())
 {

@@ -6,5 +6,5 @@ public interface IQualificationService
 {
     Task<IReadOnlyList<QualificationModel>> GetAllAsync(Guid employeeId);
     Task<QualificationModel?> GetById(Guid id);
-    Task<QualificationModel> Add(Guid employeeId, QualificationDto qualificationDto);
+    Task<QualificationModel> AddAsync(Guid employeeId, QualificationDto qualificationDto);
 }

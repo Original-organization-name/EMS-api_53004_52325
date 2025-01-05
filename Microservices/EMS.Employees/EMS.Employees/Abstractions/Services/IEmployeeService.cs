@@ -8,7 +8,7 @@ public interface IEmployeeService
 {
     Task<IReadOnlyList<EmployeeModel>> GetAllAsync();
     Task<IEnumerable<EmployeeModel>> GetRecentAddedAsync();
-    Task<EmployeeModel?> GetById(Guid id);
+    Task<EmployeeModel?> GetByIdAsync(Guid id);
     Task<EmployeeModel> Add(EmployeeDto employee);
     
     int Count();
@@ -16,5 +16,5 @@ public interface IEmployeeService
 
     Task<string?> AddImage(Guid employeeId, string imageBase64);
 
-    Task<EmployeeModel?> Delete(Guid id);
+    Task<EmployeeModel?> DeleteAsync(Guid id);
 }

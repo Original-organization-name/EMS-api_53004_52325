@@ -31,7 +31,7 @@ public class EmployeeService(IEmployeeRepository employeeRepository, IImageRepos
             .ToList() ?? new List<EmployeeModel>();
     }
 
-    public async Task<EmployeeModel?> GetById(Guid id)
+    public async Task<EmployeeModel?> GetByIdAsync(Guid id)
     {
         var employee = await employeeRepository.GetByIdAsync(id);
         return employee.Adapt<EmployeeModel>();
@@ -70,7 +70,7 @@ public class EmployeeService(IEmployeeRepository employeeRepository, IImageRepos
         return image.Name;
     }
 
-    public async Task<EmployeeModel?> Delete(Guid id)
+    public async Task<EmployeeModel?> DeleteAsync(Guid id)
     {
         var employee = await employeeRepository.GetByIdAsync(id);
         await employeeRepository.DeleteAsync(employee);

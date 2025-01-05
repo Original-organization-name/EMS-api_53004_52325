@@ -4,11 +4,11 @@ using EMS.Employees.Abstractions.Services;
 
 namespace EMS.Employees.Services;
 
-public class ImageService(IImageRepository repositoryManager) : IImageService
+public class ImageService(IImageRepository repository) : IImageService
 {
-    public ImageModel? GetImageByName(string name)
+    public async Task<ImageModel?> GetImageByNameAsync(string name)
     {
-        var image = repositoryManager.GetByName(name);
+        var image = await repository.GetByNameAsync(name);
         return image is null ? null :
             new ImageModel(image.ContentType, image.Name, image.Content);
     }

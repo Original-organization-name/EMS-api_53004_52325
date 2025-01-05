@@ -7,12 +7,12 @@ using Microsoft.EntityFrameworkCore;
 
 namespace EMS.EmployeeRecords.Services;
 
-public class MedicalExaminationService(IMedicalExaminationRepository repositoryManager) 
+public class MedicalExaminationService(IMedicalExaminationRepository repository) 
     : IMedicalExaminationService
 {
     public async Task<IReadOnlyList<MedicalExaminationModel>> GetAllAsync(Guid employeeId)
     {
-        return await repositoryManager
+        return await repository
             .GetAll(employeeId)
             .Select(exam => exam.Adapt<MedicalExaminationModel>())
             .ToListAsync();
@@ -20,11 +20,11 @@ public class MedicalExaminationService(IMedicalExaminationRepository repositoryM
 
     public async Task<MedicalExaminationModel?> GetById(Guid id)
     {
-        var medicalExamination = await repositoryManager.GetByIdAsync(id);
+        var medicalExamination = await repository.GetByIdAsync(id);
         return medicalExamination.Adapt<MedicalExaminationModel>();
     }
 
-    public async Task<MedicalExaminationModel> Add(Guid employeeId, MedicalExaminationDto medicalExamination)
+    public async Task<MedicalExaminationModel> AddAsync(Guid employeeId, MedicalExaminationDto medicalExamination)
     {
         var medicalExam = new MedicalExamination()
         {
@@ -36,9 +36,17 @@ public class MedicalExaminationService(IMedicalExaminationRepository repositoryM
         
         
         
-        medicalExam = await repositoryManager.AddAsync(medicalExam);
-        await repositoryManager.SaveChangesAsync();
+        medicalExam = await repository.AddAsync(medicalExam);
+        await repository.SaveChangesAsync();
         return medicalExam.Adapt<MedicalExaminationModel>();
     }
-    
+
+    public async Task<IEnumerable<MedicalExaminationModel>> DeleteEmployeeExamsAsync(Guid employeeId)
+    {
+        var exams = await repository.DeleteByEmployeeIdAsync(employeeId);
+        await repository.SaveChangesAsync();
+        return exams
+            .Select(exam => exam.Adapt<MedicalExaminationModel>())
+            .ToList();
+    }
 }

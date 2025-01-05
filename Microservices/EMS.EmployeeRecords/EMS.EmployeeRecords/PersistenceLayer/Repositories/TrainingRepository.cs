@@ -20,4 +20,13 @@ public class TrainingRepository : BaseRepository<RecordsDbContext, Training>, IT
     {
         return GetAll().Where(item => item.EmployeeId == employeeId);
     }
+
+    public async Task<IEnumerable<Training>> DeleteByEmployeeIdAsync(Guid employeeId)
+    {
+        var trainings = await FindByConditionWithTracking(item => item.EmployeeId == employeeId)
+            .ToListAsync();
+        
+        RepositoryContext.RemoveRange(trainings);
+        return trainings;
+    }
 }

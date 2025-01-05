@@ -9,11 +9,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace EMS.EmployeeRecords.Services;
 
-public class TrainingService(ITrainingRepository repositoryManager) : ITrainingService
+public class TrainingService(ITrainingRepository repository) : ITrainingService
 {
     public async Task<IReadOnlyList<TrainingModel>> GetAllAsync(Guid employeeId)
     {
-        return await repositoryManager
+        return await repository
             .GetAll(employeeId)
             .Select(exam => exam.Adapt<TrainingModel>())
             .ToListAsync();
@@ -21,11 +21,11 @@ public class TrainingService(ITrainingRepository repositoryManager) : ITrainingS
 
     public async Task<TrainingModel?> GetById(Guid id)
     {
-        var training = await repositoryManager.GetByIdAsync(id);
+        var training = await repository.GetByIdAsync(id);
         return training.Adapt<TrainingModel>();
     }
 
-    public async Task<TrainingModel> Add(Guid employeeId, TrainingDto trainingDto)
+    public async Task<TrainingModel> AddAsync(Guid employeeId, TrainingDto trainingDto)
     {
         var training = new Training()
         {
@@ -35,15 +35,24 @@ public class TrainingService(ITrainingRepository repositoryManager) : ITrainingS
             ExpirationDate = trainingDto.ExpirationDate,
         };
         
-        training = await repositoryManager.AddAsync(training);
-        await repositoryManager.SaveChangesAsync();
+        training = await repository.AddAsync(training);
+        await repository.SaveChangesAsync();
         return training.Adapt<TrainingModel>();
     }
 
     public async Task<RecordStatus?> GetBhpStatusAsync(Guid employeeId)
     {
-        return (await repositoryManager.GetAll(employeeId)
+        return (await repository.GetAll(employeeId)
             .OrderByDescending(x => x.ExpirationDate ?? DateTime.MaxValue)
             .FirstOrDefaultAsync())?.ExpirationDate.GetStatus();
+    }
+
+    public async Task<IEnumerable<TrainingModel>> DeleteEmployeeTrainingsAsync(Guid employeeId)
+    {
+        var trainings = await repository.DeleteByEmployeeIdAsync(employeeId);
+        await repository.SaveChangesAsync();
+        return trainings
+            .Select(exam => exam.Adapt<TrainingModel>())
+            .ToList();
     }
 }

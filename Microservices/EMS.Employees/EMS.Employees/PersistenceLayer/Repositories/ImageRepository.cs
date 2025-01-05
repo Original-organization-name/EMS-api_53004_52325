@@ -1,6 +1,7 @@
 ﻿using EMS.Shared.Repositories;
 using EMS.Employees.Abstractions.Repositories;
 using EMS.Employees.Domain.Entities;
+using Microsoft.EntityFrameworkCore;
 
 namespace EMS.Employees.PersistenceLayer.Repositories;
 
@@ -10,8 +11,8 @@ public class ImageRepository : BaseRepository<EmployeeDbContext, Image>, IImageR
     {
     }
 
-    public Image? GetByName(string name)
+    public async Task<Image?> GetByNameAsync(string name)
     {
-        return FindByCondition(x => x.Name == name).FirstOrDefault();
+        return await FindByCondition(x => x.Name == name).FirstOrDefaultAsync();
     }
 }

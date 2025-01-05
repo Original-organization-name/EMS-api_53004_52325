@@ -23,7 +23,7 @@ public class QualificationService(IQualificationRepository repositoryManager) : 
         return qualification.Adapt<QualificationModel>();
     }
 
-    public async Task<QualificationModel> Add(Guid employeeId, QualificationDto qualificationDto)
+    public async Task<QualificationModel> AddAsync(Guid employeeId, QualificationDto qualificationDto)
     {
         var qualification = new Qualification()
         {

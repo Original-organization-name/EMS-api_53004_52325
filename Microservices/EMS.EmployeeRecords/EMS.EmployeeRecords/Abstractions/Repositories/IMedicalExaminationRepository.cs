@@ -6,4 +6,6 @@ namespace EMS.EmployeeRecords.Abstractions.Repositories;
 public interface IMedicalExaminationRepository : IBaseRepository<MedicalExamination>
 {
     IQueryable<MedicalExamination> GetAll(Guid employeeId);
+    
+    Task<IEnumerable<MedicalExamination>> DeleteByEmployeeIdAsync(Guid employeeId);
 }
